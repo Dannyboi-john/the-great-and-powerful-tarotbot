@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -18,7 +16,9 @@ function App() {
       <button 
         className="submit-button"
         name="submit"
-        >Submit Query
+        >
+          <span
+            className="front" >Submit Query</span>
       </button>
     </>
   )
