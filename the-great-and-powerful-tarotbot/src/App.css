@@ -1,0 +1,8 @@
+body {
+    background-image: url(./assets/black-table.jpg);
+    background-size: cover;
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+}
