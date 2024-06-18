@@ -7,6 +7,8 @@ function App() {
   return (
     <>
       <h1>The Great and Powerful TarotBot</h1>
+
+      <textarea placeholder="Compose Query Here" name="query" rows={5} cols={80} />
     </>
   )
 }
