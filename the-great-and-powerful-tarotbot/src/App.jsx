@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <h1>The Great and Powerful TarotBot</h1>
-      <h2>{query}</h2>
+      
       <form onSubmit={handleSubmit}>
         <textarea className="query-text" 
           placeholder="Compose Query Here" 
