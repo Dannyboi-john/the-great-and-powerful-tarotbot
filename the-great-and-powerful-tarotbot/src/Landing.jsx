@@ -3,11 +3,18 @@ import './App.css'
 
 function Landing() {
 
-  const [query, setQuery] = useState();
-
   let textareaClassName = 'query-text';
   let buttonClassName = 'submit-button';
   let spanClassName = 'front';
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  if (isSubmitted) {
+    textareaClassName += ' landing-fade-out';
+    buttonClassName += ' landing-fade-out';
+  }
+
+  const [query, setQuery] = useState();
 
   function handleSubmit(e) {
 
@@ -22,7 +29,7 @@ function Landing() {
     console.log(formJson);
 
     // Adds fadeout class to Landing elements
-    textareaClassName = 'landing-fade-out';
+    textareaClassName += ' landing-fade-out';
 
   }
 
@@ -47,6 +54,7 @@ function Landing() {
         <button 
           className={buttonClassName}
           name="submit"
+          onClick={() => setIsSubmitted(true)}
           >
             <span
               className={spanClassName}

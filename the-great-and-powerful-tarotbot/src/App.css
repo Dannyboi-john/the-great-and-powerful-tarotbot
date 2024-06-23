@@ -52,4 +52,10 @@ body {
     opacity: 0;
     transition: .25s;
     transform: translateY(-10px);
+
+/*     border-radius: 12px;
+    border: 3px solid rgba(169, 169, 169, 0.075);
+    font-size: 16px;
+    font-family: 'Poppins';
+    margin-top: 10%; */
 }
