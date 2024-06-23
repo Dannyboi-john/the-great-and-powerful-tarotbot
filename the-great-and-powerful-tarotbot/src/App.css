@@ -48,3 +48,8 @@ body {
     transform: translateY(-2px);
 }
 
+.landing-fade-out {
+    opacity: 0;
+    transition: .25s;
+    transform: translateY(-10px);
+}

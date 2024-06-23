@@ -5,6 +5,10 @@ function Landing() {
 
   const [query, setQuery] = useState();
 
+  let textareaClassName = 'query-text';
+  let buttonClassName = 'submit-button';
+  let spanClassName = 'front';
+
   function handleSubmit(e) {
 
     // Prevents browser from reloading the page.
@@ -17,6 +21,9 @@ function Landing() {
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
 
+    // Adds fadeout class to Landing elements
+    textareaClassName = 'landing-fade-out';
+
   }
 
   return (
@@ -25,7 +32,7 @@ function Landing() {
       <h2>{query}</h2>
       
       <form onSubmit={handleSubmit}>
-        <textarea className="query-text" 
+        <textarea className={textareaClassName}
           placeholder="Compose Query Here" 
           name="query" 
           rows={5} 
@@ -38,11 +45,11 @@ function Landing() {
           <br />
 
         <button 
-          className="submit-button"
+          className={buttonClassName}
           name="submit"
           >
             <span
-              className="front"
+              className={spanClassName}
               type="submit">Submit Query</span>
         </button>
       </form>
