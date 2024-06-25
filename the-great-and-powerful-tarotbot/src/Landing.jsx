@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 
-function Landing() {
+function Landing({ onSubmit }) {
 
   let textareaClassName = 'query-text';
   let buttonClassName = 'submit-button';
@@ -17,9 +17,11 @@ function Landing() {
   const [query, setQuery] = useState();
 
   function handleSubmit(e) {
+    onSubmit();
 
     // Prevents browser from reloading the page.
     e.preventDefault();
+    setIsSubmitted(true);
 
     // Read the form data
     const form = e.target;
@@ -38,14 +40,13 @@ function Landing() {
       <h1>The Great and Powerful TarotBot</h1>
       <h2>{query}</h2>
       
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}
           placeholder="Compose Query Here" 
           name="query" 
           rows={5} 
           cols={80}
-          onChange={
-            e => setQuery(e.target.value)
+          onChange={e => setQuery(e.target.value)
           }
           />
 
@@ -53,8 +54,7 @@ function Landing() {
 
         <button 
           className={buttonClassName}
-          name="submit"
-          onClick={() => setIsSubmitted(true)}
+          type="submit"
           >
             <span
               className={spanClassName}
