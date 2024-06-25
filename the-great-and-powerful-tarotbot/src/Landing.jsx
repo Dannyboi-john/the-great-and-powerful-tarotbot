@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
 
 function Landing({ onSubmit }) {
@@ -9,9 +9,19 @@ function Landing({ onSubmit }) {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const ref = React.createRef();
+
+  // Handles fading out animation.
   if (isSubmitted) {
     textareaClassName += ' landing-fade-out';
     buttonClassName += ' landing-fade-out';
+/* 
+  } else if (ref.current && ref.current.classList.contains("landing-fade-out")){      
+    setTimeout(function() {
+      textareaClassName += 'landing-remove';
+      buttonClassName += 'landing-remove';
+
+  }, 250);} */
   }
 
   const [query, setQuery] = useState();
@@ -45,7 +55,9 @@ function Landing({ onSubmit }) {
           placeholder="Compose Query Here" 
           name="query" 
           rows={5} 
+          ref={ref}
           cols={80}
+          id="text-area-id"
           onChange={e => setQuery(e.target.value)
           }
           />
