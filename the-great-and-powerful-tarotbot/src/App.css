@@ -49,10 +49,14 @@ body {
 }
 
 .landing-fade-out {
-    visibility: hidden;
+/*     visibility: hidden;
     opacity: 0;
     transition: .25s;
     transform: translateY(-10px);
+    z-index: -1; */
+    opacity: 0;
+    display: none;
+    transition: opacity 0.25s, display  0.25;
 
 
 /*     border-radius: 12px;
@@ -60,4 +64,8 @@ body {
     font-size: 16px;
     font-family: 'Poppins';
     margin-top: 10%; */
+}
+
+.tarot-back {
+    padding: 1%;
 }
