@@ -27,10 +27,11 @@ function Landing({ onSubmit }) {
   const [query, setQuery] = useState();
 
   function handleSubmit(e) {
-    onSubmit();
+
 
     // Prevents browser from reloading the page.
     e.preventDefault();
+    onSubmit();
     setIsSubmitted(true);
 
     // Read the form data
