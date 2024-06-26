@@ -12,25 +12,27 @@ function Landing({ onSubmit }) {
   const ref = React.createRef();
 
   // Handles fading out animation.
-  if (isSubmitted) {
-    textareaClassName += ' landing-fade-out';
-    buttonClassName += ' landing-fade-out';
-/* 
-  } else if (ref.current && ref.current.classList.contains("landing-fade-out")){      
-    setTimeout(function() {
-      textareaClassName += 'landing-remove';
-      buttonClassName += 'landing-remove';
+/*   useEffect(() => { */
+    if (isSubmitted) {
+      textareaClassName += ' landing-fade-out';
+      buttonClassName += ' landing-fade-out';
+    }
+/*       let timeout = setTimeout(() => {
+        textareaClassName += ' landing-remove';
+        buttonClassName += ' landing-remove';
+      }, 300)}
+      return () => clearTimeout(timeout);
+  }, [isSubmitted]); */
 
-  }, 250);} */
-  }
 
   const [query, setQuery] = useState();
 
   function handleSubmit(e) {
 
-
     // Prevents browser from reloading the page.
     e.preventDefault();
+
+    // Passes prop to App.jsx
     onSubmit();
     setIsSubmitted(true);
 
@@ -38,10 +40,11 @@ function Landing({ onSubmit }) {
     const form = e.target;
     const formData = new FormData(form);
 
+    // Sends form data to console.
     const formJson = Object.fromEntries(formData.entries());
     console.log(formJson);
 
-    // Adds fadeout class to Landing elements
+    // Adds fadeout class to Landing elements.
     textareaClassName += ' landing-fade-out';
 
   }

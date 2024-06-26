@@ -49,21 +49,17 @@ body {
 }
 
 .landing-fade-out {
-/*     visibility: hidden;
     opacity: 0;
     transition: .25s;
     transform: translateY(-10px);
-    z-index: -1; */
+    z-index: -1;
     opacity: 0;
-    display: none;
     transition: opacity 0.25s, display  0.25;
+    visibility: hidden;
+}
 
-
-/*     border-radius: 12px;
-    border: 3px solid rgba(169, 169, 169, 0.075);
-    font-size: 16px;
-    font-family: 'Poppins';
-    margin-top: 10%; */
+.landing-remove {
+    display: none;
 }
 
 .tarot-back {
