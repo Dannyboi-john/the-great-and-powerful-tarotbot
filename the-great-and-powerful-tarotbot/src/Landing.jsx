@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
+import Header from './Header.jsx'
 
 function Landing({ onSubmit }) {
 
@@ -51,8 +52,7 @@ function Landing({ onSubmit }) {
 
   return (
     <>
-      <h1>The Great and Powerful TarotBot</h1>
-      <h2>{query}</h2>
+     {/*  <Header queryText = {query}/> */}
       
       <form onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}

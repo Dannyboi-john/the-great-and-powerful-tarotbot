@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Landing from './Landing.jsx'
 import CardView from './CardView.jsx'
+import Header from './Header.jsx'
 
 function App() {
   const [showCardBacks, setShowCardBacks] = useState(false);
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <>
+      <Header />
       {showCardBacks ? <CardView /> : <Landing onSubmit={handleShowCardBacks}/>}
     </>
       
