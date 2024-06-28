@@ -8,6 +8,8 @@ function App() {
   const [showCardBacks, setShowCardBacks] = useState(false);
   const [shouldStartTimer, setShouldStartTimer] = useState(false);
 
+  const [query, setQuery] = useState('')
+
   useEffect(() => {
     if (shouldStartTimer) {
       const timer = setTimeout(() => {
@@ -18,13 +20,15 @@ function App() {
     }
   }, [shouldStartTimer]);
 
-  const handleShowCardBacks = () => {
+  const handleShowCardBacks = (query) => {
     setShouldStartTimer(true);
+    setQuery(query)
   }
 
   return (
     <>
       <Header />
+      <h2>{query}</h2>
       {showCardBacks ? <CardView /> : <Landing onSubmit={handleShowCardBacks}/>}
     </>
       

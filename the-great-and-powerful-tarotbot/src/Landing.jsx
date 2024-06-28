@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import Header from './Header.jsx'
+
 
 function Landing({ onSubmit }) {
 
@@ -26,7 +26,7 @@ function Landing({ onSubmit }) {
   }, [isSubmitted]); */
 
 
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState('');
 
   function handleSubmit(e) {
 
@@ -34,7 +34,7 @@ function Landing({ onSubmit }) {
     e.preventDefault();
 
     // Passes prop to App.jsx
-    onSubmit();
+    onSubmit(query);
     setIsSubmitted(true);
 
     // Read the form data
