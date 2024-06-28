@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, createContext, useContext } from 'react'
 import './App.css'
 import Landing from './Landing.jsx'
 import CardView from './CardView.jsx'
 import Header from './Header.jsx'
+
+const QueryContext = createContext()
 
 function App() {
   const [showCardBacks, setShowCardBacks] = useState(false);
