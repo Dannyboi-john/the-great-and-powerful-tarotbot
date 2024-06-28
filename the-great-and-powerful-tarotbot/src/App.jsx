@@ -22,7 +22,7 @@ function App() {
 
   const handleShowCardBacks = (query) => {
     setShouldStartTimer(true);
-    setQuery(query)
+    setQuery(query);
   }
 
   return (

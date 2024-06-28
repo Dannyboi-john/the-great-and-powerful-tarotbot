@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import './App.css'
-
 
 function Landing({ onSubmit }) {
 
@@ -9,24 +8,15 @@ function Landing({ onSubmit }) {
   let spanClassName = 'front';
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [query, setQuery] = useState('');
 
   const ref = React.createRef();
 
-  // Handles fading out animation.
-/*   useEffect(() => { */
     if (isSubmitted) {
       textareaClassName += ' landing-fade-out';
       buttonClassName += ' landing-fade-out';
     }
-/*       let timeout = setTimeout(() => {
-        textareaClassName += ' landing-remove';
-        buttonClassName += ' landing-remove';
-      }, 300)}
-      return () => clearTimeout(timeout);
-  }, [isSubmitted]); */
 
-
-  const [query, setQuery] = useState('');
 
   function handleSubmit(e) {
 
@@ -52,8 +42,6 @@ function Landing({ onSubmit }) {
 
   return (
     <>
-     {/*  <Header queryText = {query}/> */}
-      
       <form onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}
           placeholder="Compose Query Here" 
@@ -62,7 +50,7 @@ function Landing({ onSubmit }) {
           ref={ref}
           cols={80}
           id="text-area-id"
-          onChange={e => setQuery(e.target.value)
+          onChange={e => setQuery(e.target.value) 
           }
           />
 

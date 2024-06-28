@@ -62,7 +62,7 @@ body {
     display: none;
 }
 
-.tarot-back { 
+.tarot-back {
     padding: 1%;
     animation: fade-in 0.5s;
 }
