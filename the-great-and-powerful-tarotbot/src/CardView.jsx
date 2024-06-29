@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
 import tarotBack from './assets/tarot-back.jpg'
+/* import Card from './Card' */
 
 function CardView(props) {
 
@@ -14,6 +15,7 @@ function CardView(props) {
             const json = await response.json();
             console.log(json);
             setCardsData(json.cards);
+            console.log(json.cards[0]["desc"])
         } 
         getCards()
     }, [])
