@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import tarotBack from './assets/tarot-back.jpg'
-/* import Card from './Card' */
+import Card from './Card'
 
 function CardView(props) {
 
-    const [cardsData, setCardsData] = useState([])
+/*     const [cardsData, setCardsData] = useState([])
 
     useEffect(() => {
         async function getCards() {
@@ -18,7 +17,7 @@ function CardView(props) {
             console.log(json.cards[0]["desc"])
         } 
         getCards()
-    }, [])
+    }, []) */
 /* 
     const cardData = [
         {
@@ -44,9 +43,9 @@ function CardView(props) {
 
     return (
         <>
-            <img className="tarot-back" src={tarotBack} alt="Back of a tarot card"/>
-            <img className="tarot-back" src={tarotBack} alt="Back of a tarot card"/>
-            <img className="tarot-back" src={tarotBack} alt="Back of a tarot card"/>
+        <Card />
+        <Card />
+        <Card />
         </>
     )
     
