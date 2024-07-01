@@ -8,12 +8,11 @@ function Card() {
     useEffect(() => {
         async function getCards() {
             const tarotAPI = 'https://tarotapi.dev/api/v1';
-            const numOfCards = 4;
-            const response = await fetch(tarotAPI + '/cards/random?n=78') /* numOfCards.toString()) */;
+            const numOfCards = 3;
+            const response = await fetch(tarotAPI + '/cards/random?n=78' + numOfCards.toString()) ;
             const json = await response.json();
             console.log(json);
             setCardsData(json.cards);
-            console.log(cardsData);
             /* console.log(json.cards[0]["desc"]) */
         } 
         getCards()
