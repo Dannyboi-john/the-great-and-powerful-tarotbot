@@ -4,7 +4,7 @@ import Card from './Card'
 
 function CardView(props) {
 
-/*     const [cardsData, setCardsData] = useState([])
+    const [cardsData, setCardsData] = useState([])
 
     useEffect(() => {
         async function getCards() {
@@ -17,7 +17,7 @@ function CardView(props) {
             console.log(json.cards[0]["desc"])
         } 
         getCards()
-    }, []) */
+    }, [])
 /* 
     const cardData = [
         {
