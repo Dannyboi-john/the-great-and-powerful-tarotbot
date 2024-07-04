@@ -24,6 +24,7 @@ function Card() {
     }, [])
  */
 
+
     function displayCard(e) {
         e.target.setAttribute('class', 'tarot-front')
         e.target.setAttribute( 'src', test)

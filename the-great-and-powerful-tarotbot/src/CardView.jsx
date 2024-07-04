@@ -43,9 +43,17 @@ function CardView(props) {
 
     return (
         <>
-        <Card />
-        <Card />
-        <Card />
+            <div className="flip-container">
+                <div className="past-card">
+                    <Card />
+                </div>
+                <div className="present-card">
+                    <Card />
+                </div>
+                <div className="future-card">
+                    <Card />
+                </div>
+            </div>
         </>
     )
     
