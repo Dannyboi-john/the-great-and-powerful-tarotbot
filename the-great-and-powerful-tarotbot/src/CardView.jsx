@@ -14,7 +14,7 @@ function CardView(props) {
             const json = await response.json();
             console.log(json);
             setCardsData(json.cards);
-            console.log(json.cards[0]["desc"])
+            console.log(json.cards[0]["name_short"])
         } 
         getCards()
     }, [])
@@ -45,13 +45,13 @@ function CardView(props) {
         <>
             <div className="flip-container">
                 <div className="past-card">
-                    <Card />
+                    <Card cardData={cardsData[0]} />
                 </div>
                 <div className="present-card">
-                    <Card />
+                    <Card cardData={cardsData[1]}/>
                 </div>
                 <div className="future-card">
-                    <Card />
+                    <Card cardData={cardsData[2]}/>
                 </div>
             </div>
         </>

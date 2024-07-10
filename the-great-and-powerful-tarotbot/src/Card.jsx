@@ -5,7 +5,7 @@ import test from './assets/tarot-cards/ar01.jpg'
 
 
 
-function Card() {
+function Card(cardData) {
 
 /*     const [cardsData, setCardsData] = useState([])
 
@@ -26,8 +26,8 @@ function Card() {
 
 
     function displayCard(e) {
-        e.target.setAttribute('class', 'tarot-front')
-        e.target.setAttribute( 'src', test)
+        e.target.setAttribute('class', 'tarot-front');
+        e.target.setAttribute( 'src', test);
 
     }
     return (

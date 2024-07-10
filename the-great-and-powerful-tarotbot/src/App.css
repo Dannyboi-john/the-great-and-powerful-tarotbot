@@ -82,24 +82,36 @@ body {
 }
 
 .tarot-front {
-    width: 54%;
+    max-width: 80%;
+    object-fit: contain;
 }
 
 .past-card {
+    width: 100%;
     margin: 1%;
+    
 }
 
 .present-card {
+    width: 100%;
     margin: 1%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
 .future-card {
     margin: 1%;
+    width: 100%;
 }
 
 .flip-container {
+/*     display: grid;
+    grid-template-columns: auto auto auto; */
     display: flex;
+    flex-direction: row;
+    flex: 1 1 1;
     padding-left: 10%;
     padding-right: 10%;
     justify-content: space-between;
+    perspective: 1000px;
 }
