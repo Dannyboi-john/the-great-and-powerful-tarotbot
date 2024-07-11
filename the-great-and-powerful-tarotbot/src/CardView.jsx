@@ -13,8 +13,12 @@ function CardView(props) {
             const response = await fetch(tarotAPI + '/cards/random?n=' + numOfCards.toString());
             const json = await response.json();
             console.log(json);
-            setCardsData(json.cards);
-            console.log(json.cards[0]["name_short"])
+            setCardsData(json)
+            console.log(json.cards[0]["name_short"]);
+            console.log(json.cards[1]["name_short"]);
+            console.log(json.cards[2]["name_short"]);
+            console.log(json);
+            console.log(cardsData);
         } 
         getCards()
     }, [])
