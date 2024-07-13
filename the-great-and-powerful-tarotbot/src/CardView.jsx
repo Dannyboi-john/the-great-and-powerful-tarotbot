@@ -2,62 +2,54 @@ import React, { useState, useEffect } from 'react'
 import './App.css'
 import Card from './Card'
 
-function CardView(props) {
+function CardView() {
 
-    const [cardsData, setCardsData] = useState([])
+
+
+    const [cardsData, setCardsData] = useState([null])
 
     useEffect(() => {
-        async function getCards() {
-            const tarotAPI = 'https://tarotapi.dev/api/v1';
-            const numOfCards = 3;
-            const response = await fetch(tarotAPI + '/cards/random?n=' + numOfCards.toString());
-            const json = await response.json();
-            console.log(json);
-            setCardsData(json)
-            console.log(json.cards[0]["name_short"]);
-            console.log(json.cards[1]["name_short"]);
-            console.log(json.cards[2]["name_short"]);
-            console.log(json);
-            console.log(cardsData);
-        } 
-        getCards()
-    }, [])
-/* 
-    const cardData = [
-        {
-            name: 'some card',
-            desc: 'some desc',
-            imgUrl: 'tarot1.png'
-        },
-            {
-            name: 'some other card',
-            desc: 'some other desc',
-            imgUrl: 'tarot2.png'
-        },
-         {
-            name: 'some other other card',
-            desc: 'some other other desc',
-            imgUrl: 'tarot3.png'
-        },
-    ] */
 
+        async function getCards() {
+
+            try {
+                const tarotAPI = 'https://tarotapi.dev/api/v1';
+                const numOfCards = 3;
+                const response = await fetch(tarotAPI + '/cards/random?n=' + numOfCards.toString());
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const json = await response.json();
+                console.log(json);
+                setCardsData(json);
+            } catch (error)  {
+                console.error("Error fetching data: ". error);
+            }
+        } 
+        getCards();
+    }, [])
        // https://tarotapi.dev/
        // https://tarotapi.dev/api/v1/cards/random?n=3
 
+    if (!cardsData || !cardsData.cards) {
+        return <div>Loading...</div>
+    }
 
     return (
         <>
-            <div className="flip-container">
-                <div className="past-card">
-                    <Card cardData={cardsData[0]} />
+            {cardsData && (
+                <div className="flip-container">
+                    <div className="past-card">
+                        <Card cardData={cardsData.cards[0].name_short} />
+                    </div>
+                    <div className="present-card">
+                        <Card cardData={cardsData.cards[1].name_short}/>
+                    </div>
+                    <div className="future-card">
+                        <Card cardData={cardsData.cards[2].name_short}/>
+                    </div>
                 </div>
-                <div className="present-card">
-                    <Card cardData={cardsData[1]}/>
-                </div>
-                <div className="future-card">
-                    <Card cardData={cardsData[2]}/>
-                </div>
-            </div>
+            )}
         </>
     )
     
