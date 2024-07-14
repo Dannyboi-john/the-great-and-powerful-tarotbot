@@ -8,9 +8,14 @@ function Card({ cardData }) {
     const  [isFlipped, setIsFlipped] = useState(false);
 
 
-    function displayCard() {
-        setSrc(`./assets/tarot-cards/${cardData}.jpg`);
-        setIsFlipped(true);
+    async function displayCard() {
+        try {
+            const cardImage = await import(`./assets/tarot-cards/${cardData}.jpg`);
+            setSrc(cardImage.default || cardImage);
+            setIsFlipped(true);
+        } catch (error) {
+            console.error('Error loading image:', error)
+        }
 
     }
     return (
