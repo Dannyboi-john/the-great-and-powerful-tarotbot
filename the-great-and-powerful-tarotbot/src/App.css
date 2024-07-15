@@ -66,6 +66,7 @@ body {
     padding: 1%;
     animation: fade-in 1s;
     transition: all .2s ease-in-out;
+    cursor: pointer;
 }
 
 .tarot-back:hover {
