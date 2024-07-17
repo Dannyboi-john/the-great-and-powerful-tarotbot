@@ -27,9 +27,11 @@ function App() {
 
   return (
     <>
-      <Header />
-      <h2>{query}</h2>
-      {showCardBacks ? <CardView /> : <Landing onSubmit={handleShowCardBacks}/>}
+      {/* <div className="background"> */}
+        <Header />
+        <h2>{query}</h2>
+        {showCardBacks ? <CardView /> : <Landing onSubmit={handleShowCardBacks}/>}
+      {/* </div> */}
     </>
       
   )
