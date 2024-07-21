@@ -118,9 +118,11 @@ body {
 }
 
 .background {
-    background-color: rgb(51, 106, 124);
+    background-color: rgba(136, 72, 72, 0.5);
     border-radius: 15px;
     height: 85vh;
+    box-shadow: 0 0 10px 5px;
+
 
 
 }
