@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import tarotBack from './assets/tarot-back.jpg'
+import tarotBack from './assets/tarot-back.jpg';
+import CardModal from './CardModal';
 
 
 function Card({ cardData }) {
 
     const [src, setSrc] = useState(tarotBack);
-    const  [isFlipped, setIsFlipped] = useState(false);
+    const [isFlipped, setIsFlipped] = useState(false);
+    const [modal, setModal] = useState(false)
 
 
     async function displayCard() {
@@ -17,14 +19,24 @@ function Card({ cardData }) {
             console.error('Error loading image:', error)
         }
 
+        setModal(true);
+
     }
     return (
 
+        <>
         <img 
             className={isFlipped ? 'tarot-front' : 'tarot-back'}
             src={src}
             alt="Back of a tarot card"
             onClick={displayCard}/>
+        <CardModal
+            openModal={modal}
+            closeModal={() => setModal(false)}
+        >
+            This is where the card descriptions will go!
+        </CardModal>
+        </>
     )
 }
 
