@@ -12,7 +12,7 @@ function Card({ cardData }) {
 
     async function displayCard() {
         try {
-            const cardImage = await import(`./assets/tarot-cards/${cardData}.jpg`);
+            const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.jpg`);
             setSrc(cardImage.default || cardImage);
             setIsFlipped(true);
         } catch (error) {
@@ -34,7 +34,7 @@ function Card({ cardData }) {
             openModal={modal}
             closeModal={() => setModal(false)}
         >
-            This is where the card descriptions will go!
+            {cardData.desc}
         </CardModal>
         </>
     )

@@ -35,18 +35,19 @@ function CardView() {
         return <div>Loading...</div>
     }
 
+
     return (
         <>
             {cardsData && (
                 <div className="flip-container">
                     <div className="past-card">
-                        <Card cardData={cardsData.cards[0].name_short} />
+                        <Card cardData={cardsData.cards[0]} />
                     </div>
                     <div className="present-card">
-                        <Card cardData={cardsData.cards[1].name_short}/>
+                        <Card cardData={cardsData.cards[1]}/>
                     </div>
                     <div className="future-card">
-                        <Card cardData={cardsData.cards[2].name_short}/>
+                        <Card cardData={cardsData.cards[2]}/>
                     </div>
                 </div>
             )}
