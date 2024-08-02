@@ -124,3 +124,15 @@ body {
     box-shadow: 0 0 10px 5px;
 
 }
+
+.description-modal::backdrop {
+    background: rgb(0 0 0 / .8);
+
+}
+
+.description-modal {
+    color: white;
+    background-color: transparent;
+    font-size: 1.5em;
+    border: none;
+}

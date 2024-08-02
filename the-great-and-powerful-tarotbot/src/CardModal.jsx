@@ -16,6 +16,7 @@ function CardModal({ openModal, closeModal, children}) {
         <dialog
             ref={ref}
             onCancel={closeModal}
+            className="description-modal"
         >
             {children}
             <button onClick={closeModal}>
