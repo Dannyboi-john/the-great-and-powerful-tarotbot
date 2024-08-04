@@ -19,6 +19,8 @@ function Card({ cardData }) {
             console.error('Error loading image:', error)
         }
 
+
+
         setModal(true);
 
     }
@@ -33,6 +35,8 @@ function Card({ cardData }) {
         <CardModal
             openModal={modal}
             closeModal={() => setModal(false)}
+            delay={20}
+
         >
             {cardData.desc}
         </CardModal>
