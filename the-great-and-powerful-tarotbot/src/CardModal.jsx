@@ -1,15 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Children } from "react";
+import React, { useEffect, useRef } from "react";
+// import { Children } from "react";
 
-function CardModal({ openModal, closeModal, children, delay}) {
+function CardModal({ openModal, closeModal,  children, /* delay */}) {
     const ref = useRef();
 
     // Handles the typing animation.
-    const [currentText, setCurrentText] = useState('');
-    const [currentIndex, setCurrentIndex] = useState(0);
+/*     const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0); */
 
 
-    // Using setTimeout to animate text on card flip
+/*     // Using setTimeout to animate text on card flip
     useEffect(()=> {
         if (currentIndex < children.length) {
             const timeout = setTimeout(() => {
@@ -20,7 +20,7 @@ function CardModal({ openModal, closeModal, children, delay}) {
             return () => clearTimeout(timeout);
         }
     }, [currentIndex, delay, children]);
-
+ */
 
     useEffect(() => {
         if (openModal) {
@@ -37,7 +37,7 @@ function CardModal({ openModal, closeModal, children, delay}) {
             onCancel={closeModal}
             className="description-modal"
         >
-            {currentText}
+        {children}
             <br/>
             <button onClick={closeModal}>
                 Close

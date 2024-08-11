@@ -5,6 +5,9 @@ import CardModal from './CardModal';
 
 function Card({ cardData }) {
 
+    const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
+
     const [src, setSrc] = useState(tarotBack);
     const [isFlipped, setIsFlipped] = useState(false);
     const [modal, setModal] = useState(false)
@@ -19,9 +22,23 @@ function Card({ cardData }) {
             console.error('Error loading image:', error)
         }
 
-
-
         setModal(true);
+
+        // Using setTimeout to animate text on card flip.
+        while (currentIndex < cardData.desc.length) {
+            const timeout = setTimeout(() => {
+                setCurrentText(prevText => prevText + cardData.desc[currentIndex]);
+                setCurrentIndex(prevIndex => prevIndex + 1);
+                console.log(currentIndex);
+            }, 500);
+
+            return () => clearTimeout(timeout);
+        }
+
+
+
+
+
 
     }
     return (
@@ -35,10 +52,9 @@ function Card({ cardData }) {
         <CardModal
             openModal={modal}
             closeModal={() => setModal(false)}
-            delay={20}
 
         >
-            {cardData.desc}
+            {currentText}
         </CardModal>
         </>
     )
