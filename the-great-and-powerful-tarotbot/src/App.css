@@ -136,4 +136,5 @@ body {
     background-color: transparent;
     font-size: 1.5em;
     border: none;
+    float: left;
 }

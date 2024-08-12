@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import tarotBack from './assets/tarot-back.jpg';
 import CardModal from './CardModal';
 
@@ -13,6 +13,18 @@ function Card({ cardData }) {
     const [modal, setModal] = useState(false)
 
 
+    // Using setTImeout to animate card text.
+    useEffect(() => {
+        if (currentIndex < cardData.desc.length) {
+            const timeout = setTimeout(() => {
+                setCurrentText(prevText => prevText + cardData.desc[currentIndex]);
+                setCurrentIndex(prevIndex => prevIndex + 1);
+            }, 20);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [currentIndex, cardData.desc]);
+
     async function displayCard() {
         try {
             const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.jpg`);
@@ -23,21 +35,8 @@ function Card({ cardData }) {
         }
 
         setModal(true);
-
-        // Using setTimeout to animate text on card flip.
-        while (currentIndex < cardData.desc.length) {
-            const timeout = setTimeout(() => {
-                setCurrentText(prevText => prevText + cardData.desc[currentIndex]);
-                setCurrentIndex(prevIndex => prevIndex + 1);
-                console.log(currentIndex);
-            }, 500);
-
-            return () => clearTimeout(timeout);
-        }
-
-
-
-
+        setCurrentText('');
+        setCurrentIndex(0);
 
 
     }
