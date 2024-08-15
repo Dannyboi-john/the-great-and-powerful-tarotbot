@@ -15,6 +15,8 @@ body {
     font-size: 16px;
     font-family: 'Poppins';
     margin-top: 10%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .submit-button {
