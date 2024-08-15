@@ -6,7 +6,8 @@ function Header({ queryText }) {
 
     return (
         <>
-        <h1>The Great and Powerful TarotBot</h1>
+        <h1
+        className="header">The Great and Powerful TarotBot &#128302;</h1>
         </>
     )
 }
