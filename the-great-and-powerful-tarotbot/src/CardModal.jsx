@@ -39,7 +39,10 @@ function CardModal({ openModal, closeModal,  children, /* delay */}) {
         >
         {children}
             <br/>
-            <button onClick={closeModal}>
+            <button 
+                onClick={closeModal}
+                className="close-button"
+            >
                 Close
             </button>
         </dialog>
