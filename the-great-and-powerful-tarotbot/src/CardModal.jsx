@@ -22,12 +22,16 @@ function CardModal({ openModal, closeModal,  children }) {
         >
         {children}
             <br/>
-            <button 
-                onClick={closeModal}
-                className="close-button"
-            >
-                Close
+            <div
+                className="close-button-container"
+                >
+                <button 
+                    onClick={closeModal}
+                    className="close-button"
+                >
+                    Close
             </button>
+            </div>
         </dialog>
         </>
     )
