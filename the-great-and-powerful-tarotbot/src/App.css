@@ -93,6 +93,7 @@ body {
 .tarot-front {
     max-width: 80%;
     object-fit: contain;
+    cursor: pointer;
 }
 
 .past-card {
