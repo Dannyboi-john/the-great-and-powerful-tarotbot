@@ -75,10 +75,13 @@ body {
     transition: all .2s ease-in-out;
     cursor: pointer;
     height: 75%;
+    box-shadow: none;
 }
 
 .tarot-back:hover {
     transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(231, 200, 25, 0.952);
+
 }
 
 @keyframes fade-in {
