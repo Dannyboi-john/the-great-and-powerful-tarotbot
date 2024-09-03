@@ -81,7 +81,7 @@ body {
 
 .tarot-back:hover {
     transform: scale(1.05);
-    box-shadow: 0px 0px 20px rgba(231, 200, 25, 0.952);
+    box-shadow: 0px 0px 20px rgb(255, 221, 25);
 }
 
 @keyframes fade-in {

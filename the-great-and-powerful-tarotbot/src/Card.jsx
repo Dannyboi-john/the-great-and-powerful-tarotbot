@@ -27,7 +27,7 @@ function Card({ cardData }) {
 
     async function displayCard() {
         try {
-            const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.jpg`);
+            const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.png`);
             setSrc(cardImage.default || cardImage);
             setIsFlipped(true);
         } catch (error) {
