@@ -53,6 +53,10 @@ function Card({ cardData }) {
             closeModal={() => setModal(false)}
 
         >
+            <div className="card-title">
+                {cardData.name}
+            </div>
+            <br/>
             {currentText}
         </CardModal>
         </>

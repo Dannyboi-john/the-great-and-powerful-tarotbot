@@ -81,7 +81,7 @@ body {
 
 .tarot-back:hover {
     transform: scale(1.05);
-    box-shadow: 0px 0px 20px rgb(255, 221, 25);
+    box-shadow: 0px 0px 20px rgb(255, 231, 98);
 }
 
 @keyframes fade-in {
@@ -152,6 +152,10 @@ body {
 
 .close-button {
     border-radius: 12px;
+    padding-left: 2.5em;
+    padding-right: 2.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 ::placeholder {
@@ -164,5 +168,13 @@ body {
     bottom: 15%;
     left: 50%;
     right: 50%;
+
+}
+
+.card-title {
+    font-size: 2.0em;
+    text-align: center;
+    color: gold;
+    display: inline-block;
 
 }
