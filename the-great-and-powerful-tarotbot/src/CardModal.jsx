@@ -25,22 +25,12 @@ function CardModal({ openModal, closeModal,  children }) {
             onCancel={closeModal}
             className="description-modal"
         >
-        <div 
-            className="close-icon"
-            onClick={closeModal}>
-            {closeSVG}
-        </div>
-        {children}
-{/*             <div
-                className="close-button-container"
-                >
-                <div 
-                    onClick={closeModal}
-                    className="close-button"
-                >
-                    <span className="close-icon">{closeSVG}</span>
-                </div>
-            </div> */}
+            <div 
+                className="close-icon"
+                onClick={closeModal}>
+                {closeSVG}
+            </div>
+            {children}
         </dialog>
         </>
     )
