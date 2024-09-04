@@ -151,11 +151,7 @@ body {
 }
 
 .close-button {
-    border-radius: 12px;
-    padding-left: 2.5em;
-    padding-right: 2.5em;
-    padding-top: 1em;
-    padding-bottom: 1em;
+    width: 12.5em;
 }
 
 ::placeholder {
@@ -168,7 +164,11 @@ body {
     bottom: 15%;
     left: 50%;
     right: 50%;
+    cursor: pointer;
+}
 
+.close-icon {
+    cursor: pointer;
 }
 
 .card-title {
@@ -176,5 +176,4 @@ body {
     text-align: center;
     color: gold;
     display: inline-block;
-
 }
