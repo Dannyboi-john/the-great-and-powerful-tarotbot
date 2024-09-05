@@ -3,14 +3,14 @@ import tarotBack from './assets/tarot-back.jpg';
 import CardModal from './CardModal';
 
 
-function Card({ cardData }) {
+function Card({ cardData, incrementTotalFlipped }) {
 
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const [src, setSrc] = useState(tarotBack);
     const [isFlipped, setIsFlipped] = useState(false);
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(false);
 
 
     // Using setTImeout to animate card text.
@@ -30,6 +30,9 @@ function Card({ cardData }) {
             const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.png`);
             setSrc(cardImage.default || cardImage);
             setIsFlipped(true);
+            incrementTotalFlipped();
+
+
         } catch (error) {
             console.error('Error loading image:', error)
         }
@@ -38,8 +41,8 @@ function Card({ cardData }) {
         setCurrentText('');
         setCurrentIndex(0);
 
-
     }
+
     return (
 
         <>

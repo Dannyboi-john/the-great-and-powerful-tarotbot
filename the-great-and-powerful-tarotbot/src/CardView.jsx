@@ -4,9 +4,18 @@ import Card from './Card'
 
 function CardView() {
 
-
-
+    const [totalFlipped, setTotalFlipped] = useState(0);
     const [cardsData, setCardsData] = useState([null])
+
+    const [allFlipped, setAllFlipped] = useState(false)
+
+    const incrementTotalFlipped = () => {
+        setTotalFlipped(prev => prev + 1)
+        console.log(totalFlipped);
+        if (totalFlipped === 2) {
+            setAllFlipped(true);
+        }
+    }
 
     useEffect(() => {
 
@@ -35,22 +44,32 @@ function CardView() {
         return <div>Loading...</div>
     }
 
+    
+
 
     return (
         <>
             {cardsData && (
                 <div className="flip-container">
                     <div className="past-card">
-                        <Card cardData={cardsData.cards[0]} />
+                        <Card 
+                            cardData={cardsData.cards[0]}
+                            incrementTotalFlipped={incrementTotalFlipped}/>
                     </div>
                     <div className="present-card">
-                        <Card cardData={cardsData.cards[1]}/>
+                        <Card 
+                            cardData={cardsData.cards[1]}
+                            incrementTotalFlipped={incrementTotalFlipped}/>
                     </div>
                     <div className="future-card">
-                        <Card cardData={cardsData.cards[2]}/>
+                        <Card 
+                            cardData={cardsData.cards[2]}
+                            incrementTotalFlipped={incrementTotalFlipped}/>
                     </div>
                 </div>
             )}
+
+            {allFlipped ? <button>test!</button> : null}
         </>
     )
     

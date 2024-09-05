@@ -145,6 +145,7 @@ body {
     background-color: transparent;
     font-size: 1.5em;
     border: none;
+    outline: none;
     margin-right: 20%;
     margin-left: 20%;
     text-align: left;
