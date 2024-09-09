@@ -94,25 +94,25 @@ body {
 }
 
 .tarot-front {
-    max-width: 80%;
+    max-width: 70%;
     object-fit: contain;
     cursor: pointer;
 }
 
 .past-card {
-    width: 100%;
+    width: 90%;
     margin: 1%;
     
 }
 
 .present-card {
-    width: 100%;
+    width: 90%;
     margin: 1%;
 }
 
 .future-card {
     margin: 1%;
-    width: 100%;
+    width: 90%;
 }
 
 .flip-container {
@@ -190,6 +190,7 @@ body {
     outline-offset: 4px;
     margin-top: 2%;
     cursor: pointer;
+    box-shadow: 0px 0px 20px rgb(255, 231, 98);
 }
 
 .begin-reading-button:active .front {
@@ -197,5 +198,5 @@ body {
 }
 
 .begin-reading-button:hover {
-    box-shadow: 0px 0px 20px rgb(255, 231, 98);
+    box-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
