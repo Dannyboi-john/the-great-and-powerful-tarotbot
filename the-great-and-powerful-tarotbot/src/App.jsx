@@ -3,12 +3,20 @@ import './App.css'
 import Landing from './Landing.jsx'
 import CardView from './CardView.jsx'
 import Header from './Header.jsx'
+import ReadingView from './ReadingView.jsx'
+import { DataProvider } from './DataContext'
 
 function App() {
   const [showCardBacks, setShowCardBacks] = useState(false);
   const [shouldStartTimer, setShouldStartTimer] = useState(false);
 
   const [query, setQuery] = useState('')
+
+  const [beginReading, setBeginReading] = useState(false);
+
+  function handleBeginReading() {
+    setBeginReading(true);
+  }
 
   useEffect(() => {
     if (shouldStartTimer) {
@@ -31,8 +39,9 @@ function App() {
 
         <Header />
         <h2>{query}</h2>
-        {showCardBacks ? <CardView /> : <Landing onSubmit={handleShowCardBacks}/>}
-
+        <DataProvider>
+          {beginReading ? <ReadingView /> : showCardBacks ? <CardView onBeginReading={handleBeginReading}/> : <Landing onSubmit={handleShowCardBacks}/>}
+        </DataProvider>
       </div>
     </>
       

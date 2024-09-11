@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import 
 
 function ReadingView() {
 
@@ -8,9 +7,9 @@ function ReadingView() {
 
     return (
         <>
-        <div>
-
-        </div>
+        <div>THIS IS JUST A TEST TO SEE IF IT WORKED :D</div>
         </>
     )
 }
+
+export default ReadingView

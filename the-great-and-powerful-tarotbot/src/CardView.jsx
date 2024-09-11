@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import './App.css'
-import Card from './Card'
+import React, {useContext, useState, useEffect } from 'react';
+import './App.css';
+import Card from './Card';
+import { DataContext } from './DataContext';
 
-function CardView() {
+function CardView( { onBeginReading }) {
 
     const [totalFlipped, setTotalFlipped] = useState(0);
     const [cardsData, setCardsData] = useState([null])
 
     const [allFlipped, setAllFlipped] = useState(false)
+
+    const { setData } = useContext(DataContext)
 
     const incrementTotalFlipped = () => {
         setTotalFlipped(prev => prev + 1)
@@ -31,20 +34,18 @@ function CardView() {
                 const json = await response.json();
                 console.log(json);
                 setCardsData(json);
+                setData(json);
             } catch (error)  {
-                console.error("Error fetching data: ". error);
+                console.error("Error fetching data: ", error);
             }
         } 
         getCards();
-    }, [])
-       // https://tarotapi.dev/
-       // https://tarotapi.dev/api/v1/cards/random?n=3
+    }, [setData])
+
 
     if (!cardsData || !cardsData.cards) {
         return <div>Loading...</div>
     }
-
-    
 
 
     return (
@@ -69,7 +70,7 @@ function CardView() {
                 </div>
             )}
 
-            {allFlipped ? <button className="begin-reading-button"><span className="front">Begin Reading</span></button> : null}
+            {allFlipped ? <button onClick={onBeginReading} className="begin-reading-button"><span className="front">Begin Reading</span></button> : null}
         </>
     )
     
