@@ -25,6 +25,8 @@ function Card({ cardData, incrementTotalFlipped }) {
         }
     }, [currentIndex, cardData.desc]);
 
+
+    // Dynamically import front of tarot cards.
     async function displayCard() {
         try {
             const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.png`);
