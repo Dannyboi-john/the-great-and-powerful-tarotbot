@@ -200,3 +200,11 @@ body {
 .begin-reading-button:hover {
     box-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
+
+.reading-container {
+    grid-template-columns: 20% auto;
+}
+
+.reading-card-view {
+    height: 20vh;
+}

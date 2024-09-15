@@ -56,7 +56,7 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
 
         <>
         <img 
-            className={isFlipped ? 'tarot-front' : 'tarot-back'}
+            className={parent === "ReadingView" ? "reading-card-view" : isFlipped ? 'tarot-front' : 'tarot-back'}
             src={src}
             alt="Back of a tarot card"
             onLoad={parent === "ReadingView" ? displayCard : null}
