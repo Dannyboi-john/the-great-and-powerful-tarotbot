@@ -202,7 +202,10 @@ body {
 }
 
 .reading-container {
-    grid-template-columns: 20% auto;
+    display: grid;
+    grid-template-columns: 20% 60%;
+    justify-content: left;
+    grid-gap: 1%;
 }
 
 .reading-card-view {

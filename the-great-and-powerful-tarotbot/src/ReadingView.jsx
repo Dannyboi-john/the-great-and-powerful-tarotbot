@@ -33,12 +33,12 @@ function ReadingView() {
                     src={imageSrc}
                     onLoad={displayCard}
                 />
-
+            </div>
             <div>
                 Chat gpt feedback will go here    
             </div>    
 
-            </div>
+
             <div className="reading-present-card">
                 <Card 
                     cardData={data.cards[1]}
@@ -46,12 +46,12 @@ function ReadingView() {
                     src={imageSrc}
                     onLoad={displayCard}
                 />
-
+            </div>
             <div>
                 Chat gpt feedback will go here    
             </div>
 
-            </div>
+
             <div className="reading-future-card">
                 <Card 
                     cardData={data.cards[2]}
