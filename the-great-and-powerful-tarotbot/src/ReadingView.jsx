@@ -35,7 +35,7 @@ function ReadingView() {
                 />
             </div>
             <div>
-                Chat gpt feedback will go here    
+            <button className="commune-button"><span className="front">Commune with Spirits</span></button>   
             </div>    
 
 
@@ -48,7 +48,7 @@ function ReadingView() {
                 />
             </div>
             <div>
-                Chat gpt feedback will go here    
+            <button className="commune-button"><span className="front">Commune with Spirits</span></button>    
             </div>
 
 
@@ -62,7 +62,7 @@ function ReadingView() {
             </div>
 
             <div>
-                Chat gpt feedback will go here    
+            <button className="commune-button"><span className="front">Commune with Spirits</span></button>    
             </div>
         </div>
         </>
