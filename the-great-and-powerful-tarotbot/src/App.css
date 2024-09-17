@@ -233,3 +233,8 @@ body {
 .commune-button:active .front {
     transform: translateY(2px);
 }
+
+.commune-button-container {
+    justify-self: center;
+    align-self: center;
+}
