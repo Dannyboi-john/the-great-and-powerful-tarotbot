@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from './DataContext'
 import OpenAI from "openai";
-import Card from './Card'
+import Card from './Card';
+import CommuneButton from './CommuneButton';
 
 function ReadingView() {
 
@@ -21,6 +22,7 @@ function ReadingView() {
     const [apiResponse, setApiResponse] = useState("");
 
 
+    // Contacts ChatGPT
     async function oracle() {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
@@ -63,7 +65,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                <button className="commune-button" onClick={oracle}><span className="front">Commune with Spirits</span></button>   
+                <CommuneButton />   
             </div>    
 
 
@@ -76,7 +78,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                <button className="commune-button"><span className="front">Commune with Spirits</span></button>    
+                <CommuneButton />   
             </div>
 
 
@@ -90,7 +92,7 @@ function ReadingView() {
             </div>
 
             <div className="commune-button-container">
-                <button className="commune-button"><span className="front">Commune with Spirits</span></button>    
+                <CommuneButton />    
             </div>
         </div>
         </>
