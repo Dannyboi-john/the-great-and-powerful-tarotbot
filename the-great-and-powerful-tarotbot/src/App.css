@@ -229,3 +229,7 @@ body {
 .commune-button:hover {
     box-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
+
+.commune-button:active .front {
+    transform: translateY(2px);
+}
