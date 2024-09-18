@@ -12,32 +12,7 @@ function ReadingView() {
     // Used for reassigning tarot front images
     const [imageSrc, setImageSrc] = useState(null)
 
-    const openai = new OpenAI({
-        apiKey: import.meta.env.VITE_REACT_APP_OPENAI_API_KEY,
-        dangerouslyAllowBrowser: true
-
-    });
-
-    // const [promp, setPrompt] = useState("");
     const [apiResponse, setApiResponse] = useState("");
-
-
-    // Contacts ChatGPT
-    async function oracle() {
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini",
-            messages: [
-                {role: "system", content: "You are a master tarot card reader."},
-                {
-                    role: "user",
-                    content: "I have drawn The Magician card. What might that mean?",
-                },
-            ],
-        });
-        setApiResponse(completion.choices[0].message);
-        console.log(apiResponse.content);
-    }
-
 
     // Dynamically import front of tarot cards.
     async function displayCard() {
@@ -65,7 +40,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                <CommuneButton />   
+                {apiResponse === "" ? <CommuneButton setApiResponse={setApiResponse}/> : apiResponse} 
             </div>    
 
 

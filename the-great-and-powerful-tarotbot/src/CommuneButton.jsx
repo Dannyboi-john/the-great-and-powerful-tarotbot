@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from './DataContext'
 import OpenAI from "openai";
 
-function CommuneButton() {
+function CommuneButton({ setApiResponse }) {
     
     // Instantiates OpenAI
     const openai = new OpenAI({
@@ -12,22 +12,24 @@ function CommuneButton() {
     });
 
     // const [promp, setPrompt] = useState("");
-    const [apiResponse, setApiResponse] = useState("");
+    
+    // const [apiResponse, setApiResponse] = useState("");
 
     // Contacts ChatGPT
     async function oracle() {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
+            max_tokens: 100,
             messages: [
                 {role: "system", content: "You are a master tarot card reader."},
                 {
                     role: "user",
-                    content: "I have drawn The Magician card. What might that mean?",
+                    content: "I have drawn The Magician card. Explain briefly what might that mean?",
                 },
             ],
         });
-        setApiResponse(completion.choices[0].message);
-        console.log(apiResponse.content);
+        setApiResponse(completion.choices[0].message.content);
+        console.log(completion);
     }
 
     return (
