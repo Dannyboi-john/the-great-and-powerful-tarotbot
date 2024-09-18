@@ -237,4 +237,5 @@ body {
 .commune-button-container {
     justify-self: center;
     align-self: center;
+    font-weight: 700;
 }

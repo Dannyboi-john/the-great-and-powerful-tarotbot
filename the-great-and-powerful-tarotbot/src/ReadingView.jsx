@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { DataContext } from './DataContext'
-import OpenAI from "openai";
 import Card from './Card';
 import CommuneButton from './CommuneButton';
 
@@ -12,7 +11,13 @@ function ReadingView() {
     // Used for reassigning tarot front images
     const [imageSrc, setImageSrc] = useState(null)
 
-    const [apiResponse, setApiResponse] = useState("");
+    const [apiResponse, setApiResponse] = useState([null, null, null]);
+
+    const updateApiResponse = (index, value) => {
+        const updatedResponse = [...apiResponse]; // Create copy of array
+        updatedResponse[index] = value; // Update specific index
+        setApiResponse(updatedResponse); // Set the new array as the state
+    }
 
     // Dynamically import front of tarot cards.
     async function displayCard() {
@@ -40,7 +45,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                {apiResponse === "" ? <CommuneButton setApiResponse={setApiResponse}/> : apiResponse} 
+                {apiResponse[0] === null ? <CommuneButton cardName={data.cards[0].name} setApiResponse={(value) => updateApiResponse(0, value)}/> : apiResponse[0]} 
             </div>    
 
 
@@ -53,7 +58,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                <CommuneButton />   
+                {apiResponse[1] === null ? <CommuneButton cardName={data.cards[1].name} setApiResponse={(value) => updateApiResponse(1, value)}/> : apiResponse[1]}   
             </div>
 
 
@@ -67,7 +72,7 @@ function ReadingView() {
             </div>
 
             <div className="commune-button-container">
-                <CommuneButton />    
+                {apiResponse[2] === null ? <CommuneButton cardName={data.cards[2].name} setApiResponse={(value) => updateApiResponse(2, value)}/> : apiResponse[2]}   
             </div>
         </div>
         </>

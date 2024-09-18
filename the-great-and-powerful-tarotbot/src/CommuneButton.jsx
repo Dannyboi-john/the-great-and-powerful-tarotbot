@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from './DataContext'
 import OpenAI from "openai";
 
-function CommuneButton({ setApiResponse }) {
+function CommuneButton({ setApiResponse, cardName }) {
     
+    // Adds data context in variable
+    const { data } = useContext(DataContext);
+
     // Instantiates OpenAI
     const openai = new OpenAI({
         apiKey: import.meta.env.VITE_REACT_APP_OPENAI_API_KEY,
@@ -19,12 +22,12 @@ function CommuneButton({ setApiResponse }) {
     async function oracle() {
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
-            max_tokens: 100,
+            max_tokens: 170,
             messages: [
                 {role: "system", content: "You are a master tarot card reader."},
                 {
                     role: "user",
-                    content: "I have drawn The Magician card. Please explain briefly what might that mean?",
+                    content: `I have drawn ${cardName}. Please explain briefly what might that mean?` ,
                 },
             ],
         });
