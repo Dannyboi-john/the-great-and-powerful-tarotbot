@@ -238,4 +238,6 @@ body {
     justify-self: center;
     align-self: center;
     font-weight: 700;
+    background-color: lightblue;
+    border-radius: 20px;
 }
