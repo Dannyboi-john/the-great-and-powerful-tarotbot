@@ -24,7 +24,7 @@ function CommuneButton({ setApiResponse }) {
                 {role: "system", content: "You are a master tarot card reader."},
                 {
                     role: "user",
-                    content: "I have drawn The Magician card. Explain briefly what might that mean?",
+                    content: "I have drawn The Magician card. Please explain briefly what might that mean?",
                 },
             ],
         });
