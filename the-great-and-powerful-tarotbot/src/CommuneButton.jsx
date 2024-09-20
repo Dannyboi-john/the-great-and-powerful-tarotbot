@@ -6,6 +6,7 @@ function CommuneButton({ setApiResponse, cardName }) {
     
     // Adds data context in variable
     const { data } = useContext(DataContext);
+    const { queryData } = useContext(DataContext);
 
     // Instantiates OpenAI
     const openai = new OpenAI({
@@ -14,9 +15,6 @@ function CommuneButton({ setApiResponse, cardName }) {
 
     });
 
-    // const [promp, setPrompt] = useState("");
-    
-    // const [apiResponse, setApiResponse] = useState("");
 
     // Contacts ChatGPT
     async function oracle() {
@@ -24,7 +22,7 @@ function CommuneButton({ setApiResponse, cardName }) {
             model: "gpt-4o-mini",
             max_tokens: 170,
             messages: [
-                {role: "system", content: "You are a master tarot card reader."},
+                {role: "system", content: `You are a master tarot card reader who has been given the following query: ${queryData}`},
                 {
                     role: "user",
                     content: `I have drawn ${cardName}. Please explain briefly what might that mean?` ,

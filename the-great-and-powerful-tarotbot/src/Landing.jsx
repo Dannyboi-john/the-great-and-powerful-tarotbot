@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import './App.css'
+import React, { useState, useContext } from 'react';
+import './App.css';
+import { DataContext } from './DataContext';
 
 function Landing({ onSubmit }) {
 
@@ -9,6 +10,9 @@ function Landing({ onSubmit }) {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [query, setQuery] = useState('');
+
+  // Accesses DataContext to pass query data from Landing to ReadingView.
+  const { setQueryData } = useContext(DataContext);
 
   const ref = React.createRef();
 
@@ -37,6 +41,9 @@ function Landing({ onSubmit }) {
 
     // Adds fadeout class to Landing elements.
     textareaClassName += ' landing-fade-out';
+
+    // Sets query data
+    setQueryData(query);
 
   }
 

@@ -38,8 +38,8 @@ function App() {
       <div className="background">
 
         <Header />
-        <h2>{query}</h2>
         <DataProvider>
+          <h2>{query}</h2>
           {beginReading ? <ReadingView /> : showCardBacks ? <CardView onBeginReading={handleBeginReading}/> : <Landing onSubmit={handleShowCardBacks}/>}
         </DataProvider>
       </div>
