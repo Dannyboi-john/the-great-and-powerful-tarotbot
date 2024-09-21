@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { DataContext } from './DataContext'
 import OpenAI from "openai";
 
-function CommuneButton({ setApiResponse, cardName }) {
+function CommuneButton({ setApiResponse, cardName, position }) {
     
     // Adds data context in variable
     const { data } = useContext(DataContext);
@@ -25,7 +25,7 @@ function CommuneButton({ setApiResponse, cardName }) {
                 {role: "system", content: `You are a master tarot card reader who has been given the following query: ${queryData}`},
                 {
                     role: "user",
-                    content: `I have drawn ${cardName}. Please explain briefly what might that mean?` ,
+                    content: `I have drawn ${cardName} to represent my ${position}. Please explain briefly what might that mean?` ,
                 },
             ],
         });

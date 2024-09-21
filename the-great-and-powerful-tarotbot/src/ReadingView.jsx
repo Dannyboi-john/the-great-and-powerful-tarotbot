@@ -45,7 +45,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                {apiResponse[0] === null ? <CommuneButton cardName={data.cards[0].name} setApiResponse={(value) => updateApiResponse(0, value)}/> : apiResponse[0]} 
+                {apiResponse[0] === null ? <CommuneButton position={"past"} cardName={data.cards[0].name} setApiResponse={(value) => updateApiResponse(0, value)}/> : apiResponse[0]} 
             </div>    
 
 
@@ -58,7 +58,7 @@ function ReadingView() {
                 />
             </div>
             <div className="commune-button-container">
-                {apiResponse[1] === null ? <CommuneButton cardName={data.cards[1].name} setApiResponse={(value) => updateApiResponse(1, value)}/> : apiResponse[1]}   
+                {apiResponse[1] === null ? <CommuneButton position={"present"} cardName={data.cards[1].name} setApiResponse={(value) => updateApiResponse(1, value)}/> : apiResponse[1]}   
             </div>
 
 
@@ -72,7 +72,7 @@ function ReadingView() {
             </div>
 
             <div className="commune-button-container">
-                {apiResponse[2] === null ? <CommuneButton cardName={data.cards[2].name} setApiResponse={(value) => updateApiResponse(2, value)}/> : apiResponse[2]}   
+                {apiResponse[2] === null ? <CommuneButton position={"future"} cardName={data.cards[2].name} setApiResponse={(value) => updateApiResponse(2, value)}/> : apiResponse[2]}   
             </div>
         </div>
         </>
