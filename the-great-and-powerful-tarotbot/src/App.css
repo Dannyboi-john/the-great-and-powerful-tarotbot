@@ -243,6 +243,8 @@ body {
 }
 
 .home-button {
+    display: flex;
+    justify-content: left;
     border-radius: 12px;
     padding: 1%;
     font-family: 'Poppins';

@@ -77,7 +77,7 @@ function ReadingView() {
         </div>
 
         <button className="home-button">
-            <span className="home-button-front">Try Another Reading</span>
+            <span className="home-button-front">Try A Different Reading</span>
         </button>
         </>
     )
