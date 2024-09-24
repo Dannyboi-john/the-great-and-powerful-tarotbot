@@ -75,6 +75,10 @@ function ReadingView() {
                 {apiResponse[2] === null ? <CommuneButton position={"future"} cardName={data.cards[2].name} setApiResponse={(value) => updateApiResponse(2, value)}/> : apiResponse[2]}   
             </div>
         </div>
+
+        <button className="home-button">
+            <span className="home-button-front">Try Another Reading</span>
+        </button>
         </>
     )
 }
