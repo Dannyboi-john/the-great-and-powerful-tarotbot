@@ -30,7 +30,6 @@ function CommuneButton({ setApiResponse, cardName, position }) {
             ],
         });
         setApiResponse(completion.choices[0].message.content);
-        console.log(completion);
     }
 
     return (

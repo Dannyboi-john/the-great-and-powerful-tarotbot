@@ -76,15 +76,5 @@ function Landing({ onSubmit }) {
   )
 }
 
-/* Inspo
-generateTarotCards() {
-  let tarotCards = [] // empty arr
-  for (3 times)
-     <TarotCard name=... desc=...>
- return (
-        tarotCards
-         
- )
-} */
 
 export default Landing

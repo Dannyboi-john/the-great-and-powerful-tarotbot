@@ -14,7 +14,6 @@ function CardView( { onBeginReading }) {
 
     const incrementTotalFlipped = () => {
         setTotalFlipped(prev => prev + 1)
-        console.log(totalFlipped);
         if (totalFlipped === 2) {
             setAllFlipped(true);
         }
@@ -32,7 +31,6 @@ function CardView( { onBeginReading }) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const json = await response.json();
-                console.log(json);
                 setCardsData(json);
                 setData(json);
             } catch (error)  {
