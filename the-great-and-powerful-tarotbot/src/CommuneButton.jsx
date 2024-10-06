@@ -22,7 +22,7 @@ function CommuneButton({ setApiResponse, cardName, position }) {
             model: "gpt-4o-mini",
             max_tokens: 170,
             messages: [
-                {role: "system", content: `You are a master tarot card reader who has been given the following query: ${queryData}`},
+                {role: "system", content: `You are a master tarot card reader who has been tasked to give a 3-card tarot reading (past/present/future) with the following query: ${queryData}`},
                 {
                     role: "user",
                     content: `I have drawn ${cardName} to represent my ${position}. Please explain briefly what might that mean?` ,
