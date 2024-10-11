@@ -11,8 +11,11 @@ function Landing({ onSubmit }) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [query, setQuery] = useState('');
 
+  const { setState } = useContext(DataContext);
+
+
   // Accesses DataContext to pass query data from Landing to ReadingView.
-  const { setQueryData } = useContext(DataContext);
+  // const { setQueryData } = useContext(DataContext); *****
 
   const ref = React.createRef();
 
@@ -30,6 +33,8 @@ function Landing({ onSubmit }) {
     // Passes prop to App.jsx
     onSubmit(query);
     setIsSubmitted(true);
+    setState((prevState) => ({ ...prevState, isSubmitted: true}));
+    
 
     // Read the form data
     const form = e.target;
@@ -43,7 +48,8 @@ function Landing({ onSubmit }) {
     textareaClassName += ' landing-fade-out';
 
     // Sets query data
-    setQueryData(query);
+    setState((prevState) => ({ ...prevState, queryData: query}));
+    setQuery(query);
 
   }
 
@@ -57,6 +63,7 @@ function Landing({ onSubmit }) {
           ref={ref}
           cols={80}
           id="text-area-id"
+          value={query} // Added this value tag while switching to context.
           onChange={e => setQuery(e.target.value) 
           }
           />

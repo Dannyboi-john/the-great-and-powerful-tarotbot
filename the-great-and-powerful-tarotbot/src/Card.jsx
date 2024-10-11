@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import tarotBack from './assets/tarot-back.jpg';
 import CardModal from './CardModal';
+/* import { DataContext } from './DataContext'; */
 
 
 function Card({ cardData, incrementTotalFlipped, parent, source }) {
 
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
+
 
     const [src, setSrc] = useState(tarotBack);
     const [isFlipped, setIsFlipped] = useState(false);

@@ -5,17 +5,21 @@ import { DataContext } from './DataContext';
 
 function CardView( { onBeginReading }) {
 
+    const { state, setState } = useContext(DataContext);
+
     const [totalFlipped, setTotalFlipped] = useState(0);
-    const [cardsData, setCardsData] = useState([null])
+    // const [cardsData, setCardsData] = useState([null]) *****
 
     const [allFlipped, setAllFlipped] = useState(false)
 
-    const { setData } = useContext(DataContext)
+    // const { setData } = useContext(DataContext) *****
 
     const incrementTotalFlipped = () => {
         setTotalFlipped(prev => prev + 1)
+        setState((prevState) => ({ ...prevState, totalFlipped: prevState.totalFlipped + 1}));
         if (totalFlipped === 2) {
             setAllFlipped(true);
+            setState((prevState) => ({ ...prevState, allFlipped: true}));
         }
     }
 
@@ -31,38 +35,39 @@ function CardView( { onBeginReading }) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
                 const json = await response.json();
-                setCardsData(json);
-                setData(json);
+                // setCardsData(json);
+                // setData(json);
+                setState((prevState) => ({...prevState, cardsData: json}))
             } catch (error)  {
                 console.error("Error fetching data: ", error);
             }
         } 
         getCards();
-    }, [setData])
+    }, [/* setData */])
 
 
-    if (!cardsData || !cardsData.cards) {
+    if (!state.cardsData || !state.cardsData.cards) {
         return <div>Loading...</div>
     }
 
 
     return (
         <>
-            {cardsData && (
+            {state.cardsData && (
                 <div className="flip-container">
                     <div className="past-card">
                         <Card 
-                            cardData={cardsData.cards[0]}
+                            cardData={state.cardsData.cards[0]}
                             incrementTotalFlipped={incrementTotalFlipped}/>
                     </div>
                     <div className="present-card">
                         <Card 
-                            cardData={cardsData.cards[1]}
+                            cardData={state.cardsData.cards[1]}
                             incrementTotalFlipped={incrementTotalFlipped}/>
                     </div>
                     <div className="future-card">
                         <Card 
-                            cardData={cardsData.cards[2]}
+                            cardData={state.cardsData.cards[2]}
                             incrementTotalFlipped={incrementTotalFlipped}/>
                     </div>
                 </div>
