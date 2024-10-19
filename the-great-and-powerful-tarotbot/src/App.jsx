@@ -9,20 +9,23 @@ import { DataContext, DataProvider } from './DataContext.jsx'
 function App() {
   return (
     <>
-      <DataProvider>  {/* Now the component tree is wrapped by DataProvider */}
-        <AppContent />  {/* Separate logic into another component */}
+      <DataProvider>  {/* Wrapped by DataProvider */}
+        <AppContent />  {/* Logic separated into another component */}
       </DataProvider>
     </>
   );
 }
 
 function AppContent() {
-  const { setState } = useContext(DataContext);  // Now it will have the correct value
+  const { state, setState, resetState } = useContext(DataContext);
 
   const [showCardBacks, setShowCardBacks] = useState(false);
   const [shouldStartTimer, setShouldStartTimer] = useState(false);
   const [query, setQuery] = useState('');
   const [beginReading, setBeginReading] = useState(false);
+
+  const [isHome, setIsHome] = useState(true);
+
 
   function handleBeginReading() {
     setBeginReading(true);
@@ -38,23 +41,43 @@ function AppContent() {
 
       return () => clearTimeout(timer);
     }
-  }, [shouldStartTimer, setState]);  // Remember to include setState as a dependency
+  }, [shouldStartTimer, setState]);
 
   const handleShowCardBacks = (query) => {
+    setIsHome(false)
     setShouldStartTimer(true);
     setState((prevState) => ({ ...prevState, shouldStartTimer: true }));
     setQuery(query);
   };
 
+  const handleGoBack = () => {
+    setBeginReading(false);
+    setIsHome(true);
+    resetState();
+  }
+
   return (
+
+
+
+
     <div className="background">
+
       <Header />
       <h2>{query}</h2>
-      {beginReading 
-        ? <ReadingView /> 
-        : showCardBacks 
-          ? <CardView onBeginReading={handleBeginReading} /> 
-          : <Landing onSubmit={handleShowCardBacks} />
+{/*         {beginReading
+          ? <ReadingView  goBack={handleGoBack}/> 
+          : showCardBacks 
+            ? <CardView onBeginReading={handleBeginReading} /> 
+            : <Landing onSubmit={handleShowCardBacks} />
+      }
+ */}
+
+        {isHome 
+        ? <Landing onSubmit={handleShowCardBacks} />
+        : beginReading 
+          ? <ReadingView goBack={handleGoBack}/> 
+          : <CardView onBeginReading={handleBeginReading} />
       }
     </div>
   );

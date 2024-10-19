@@ -12,11 +12,11 @@ export const DataProvider = ({ children }) => {
         totalFlipped: 0,    // Added
         cardsData: [null],  // Added
         allFlipped: false,  // Added
-        apiResponse: [null, null, null],
-        isSubmitted: false  // Added
+        apiResponse: [null, null, null], // Added
+        isSubmitted: false , // Added
+        isHome: true
     };
-/*     const [data, setData] = useState(null);
-    const [queryData, setQueryData] = useState(""); */
+
 
     const [state, setState] = useState(initialState);
 
