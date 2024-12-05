@@ -64,14 +64,7 @@ function AppContent() {
     <div className="background">
 
       <Header />
-      <h2>{query}</h2>
-{/*         {beginReading
-          ? <ReadingView  goBack={handleGoBack}/> 
-          : showCardBacks 
-            ? <CardView onBeginReading={handleBeginReading} /> 
-            : <Landing onSubmit={handleShowCardBacks} />
-      }
- */}
+      <h2>{state.queryData}</h2>
 
         {isHome 
         ? <Landing onSubmit={handleShowCardBacks} />
@@ -79,6 +72,7 @@ function AppContent() {
           ? <ReadingView goBack={handleGoBack}/> 
           : <CardView onBeginReading={handleBeginReading} />
       }
+      
     </div>
   );
 }

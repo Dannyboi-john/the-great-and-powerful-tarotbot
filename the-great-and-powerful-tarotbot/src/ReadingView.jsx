@@ -40,7 +40,7 @@ function ReadingView({ goBack }) {
 
 
 
-    if (!state.cardsData) {
+    if (!state.cardsData || !state.cardsData.cards || state.cardsData.cards.length < 3) {
         return console.log("It's hanging because of the state thing");
     }
 
