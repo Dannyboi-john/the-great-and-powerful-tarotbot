@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './App.css';
 import { DataContext } from './DataContext';
+import enterIcon from './assets/enter-icon.svg';
 
 function Landing({ onSubmit }) {
 
@@ -67,9 +68,9 @@ function Landing({ onSubmit }) {
           className={buttonClassName}
           type="submit"
           >
-            <span
-              className={spanClassName}
-              type="submit">Submit Query</span>
+              <img src={enterIcon}
+                alt="enter icon"
+                />
         </button>
       </form>
     </>
