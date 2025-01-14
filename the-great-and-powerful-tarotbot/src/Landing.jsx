@@ -17,8 +17,6 @@ function Landing({ onSubmit }) {
   // Accesses DataContext to pass query data from Landing to ReadingView.
   // const { setQueryData } = useContext(DataContext); *****
 
-  const ref = React.createRef();
-
     if (isSubmitted) {
       textareaClassName += ' landing-fade-out';
       buttonClassName += ' landing-fade-out';
@@ -42,7 +40,6 @@ function Landing({ onSubmit }) {
 
     // Sends form data to console.
     const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
 
     // Adds fadeout class to Landing elements.
     textareaClassName += ' landing-fade-out';
@@ -59,13 +56,9 @@ function Landing({ onSubmit }) {
         <textarea className={textareaClassName}
           placeholder="Compose Query Here" 
           name="query" 
-          rows={5} 
-          ref={ref}
-          cols={80}
           id="text-area-id"
           value={query} // Added this value tag while switching to context.
-          onChange={e => setQuery(e.target.value) 
-          }
+          onChange={e => setQuery(e.target.value)}
           />
 
           <br />
