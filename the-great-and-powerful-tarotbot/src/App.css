@@ -57,7 +57,7 @@ form {
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     font-family: 'Poppins';
-    background: #7AB13B;
+    background: #624280;
     color: rgb(0, 0, 0);
     border: none;
     outline-offset: 4px;
@@ -75,13 +75,10 @@ form {
     transform: translateY(-6px);
 }
 
-.submit-button:hover .front {
-    transform: translateY(-6px);
+.submit-button:hover {
+    box-shadow: 0px 0px 20px #c384ff;
 }
 
-.submit-button:active .front {
-    transform: translateY(-2px);
-}
 
 .landing-fade-out {
     opacity: 0;
