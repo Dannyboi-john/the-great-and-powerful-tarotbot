@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import './App.css';
 import { DataContext } from './DataContext';
 import enterIcon from './assets/enter-icon.svg';
@@ -7,16 +7,20 @@ function Landing({ onSubmit }) {
 
   let textareaClassName = 'query-text';
   let buttonClassName = 'submit-button';
-  let spanClassName = 'front';
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [query, setQuery] = useState('');
 
   const { setState } = useContext(DataContext);
 
+  const formRef = useRef(null);
 
-  // Accesses DataContext to pass query data from Landing to ReadingView.
-  // const { setQueryData } = useContext(DataContext); *****
+  function handleKeyDown(e) {
+    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  }
 
     if (isSubmitted) {
       textareaClassName += ' landing-fade-out';
@@ -35,12 +39,12 @@ function Landing({ onSubmit }) {
     setState((prevState) => ({ ...prevState, isSubmitted: true}));
     
 
-    // Read the form data
-    const form = e.target;
-    const formData = new FormData(form);
-
-    // Sends form data to console.
-    const formJson = Object.fromEntries(formData.entries());
+    const form = formRef.current;
+    if (form) {
+      const formData = new FormData(form);
+      const formJson = Object.fromEntries(formData.entries());
+      console.log('Form Data:', formJson);
+    }
 
     // Adds fadeout class to Landing elements.
     textareaClassName += ' landing-fade-out';
@@ -53,13 +57,14 @@ function Landing({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}  >
+      <form ref={formRef} onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}
           placeholder="Compose Query Here" 
           name="query" 
           id="text-area-id"
           value={query} // Added this value tag while switching to context.
           onChange={e => setQuery(e.target.value)}
+          onKeyDown={handleKeyDown}
           />
 
           <br />
@@ -68,9 +73,10 @@ function Landing({ onSubmit }) {
           className={buttonClassName}
           type="submit"
           >
-              <img src={enterIcon}
-                alt="enter icon"
-                />
+            <img
+              src={enterIcon}
+              alt="enter icon"
+              />
         </button>
       </form>
     </>
