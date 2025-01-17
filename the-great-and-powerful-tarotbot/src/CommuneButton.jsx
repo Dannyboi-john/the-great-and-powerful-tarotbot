@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { DataContext } from './DataContext'
 import OpenAI from "openai";
 import loadingGif  from './assets/loading-gif.gif';
@@ -10,7 +10,8 @@ function CommuneButton({ setApiResponse, cardName, position }) {
     const { queryData } = useContext(DataContext); */
 
     const { state } = useContext(DataContext);
-    const [isResponding, setIsResponding] = useState(false); 
+    const [isResponding, setIsResponding] = useState(false);
+    const [communeOrWait, setCommuneOrWait] = useState("Commune with Spirits")
 
     // Instantiates OpenAI
     const openai = new OpenAI({
@@ -19,22 +20,41 @@ function CommuneButton({ setApiResponse, cardName, position }) {
 
     });
 
+    useEffect(() => {
+        console.log("CommuneOrWait message updated:", communeOrWait);
+    }, [communeOrWait]);
+
 
     // Contacts ChatGPT
     async function oracle() {
-        setIsResponding(true);
-        const completion = await openai.chat.completions.create({
-            model: "gpt-4o-mini",
-            max_tokens: 170,
-            messages: [
-                {role: "system", content: `You are a master tarot card reader who has been tasked to give a very brief 3-card tarot reading (past/present/future) with the following query: ${state.queryData}`},
-                {
-                    role: "user",
-                    content: `I have drawn ${cardName} to represent my ${position}. Please explain briefly what might that mean?` ,
-                },
-            ],
-        });
-        setApiResponse(completion.choices[0].message.content);
+        try {
+            setIsResponding(true);
+
+            const completion = await openai.chat.completions.create({
+                model: "gpt-4o-mini",
+                max_tokens: 170,
+                messages: [
+                    {role: "system", content: `You are a master tarot card reader who has been tasked to give a very brief 3-card tarot reading (past/present/future) with the following query: ${state.queryData}`},
+                    {
+                        role: "user",
+                        content: `I have drawn ${cardName} to represent my ${position}. Please explain briefly what might that mean?` ,
+                    },
+                ],
+            });
+
+            // Successful response
+            setApiResponse(completion.choices[0].message.content);
+            setCommuneOrWait("Commune with Spirits")
+    } catch (error) {
+            // Rate-limiting errors
+            if (error.name === "RateLimitError" || error.message.includes("Rate limit reached")) {
+                setCommuneOrWait("Spirits are busy, try again shortly!");
+            } else {
+                console.error("OOPS", error);
+            }
+        } finally {
+            setIsResponding(false);
+        }
     }
 
 
@@ -42,7 +62,7 @@ function CommuneButton({ setApiResponse, cardName, position }) {
         <>
         {isResponding 
             ? (<img className="loading-icon" src={loadingGif} alt="Loading..." />)
-            : (<button onClick={oracle} className="commune-button">Commune with Spirits</button>)}
+            : (<button onClick={oracle} className="commune-button">{communeOrWait}</button>)}
 
         </>
     )
