@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { DataContext } from './DataContext'
 import OpenAI from "openai";
+import loadingGif  from './assets/loading-gif.gif';
 
 function CommuneButton({ setApiResponse, cardName, position }) {
     
@@ -9,6 +10,7 @@ function CommuneButton({ setApiResponse, cardName, position }) {
     const { queryData } = useContext(DataContext); */
 
     const { state } = useContext(DataContext);
+    const [isResponding, setIsResponding] = useState(false); 
 
     // Instantiates OpenAI
     const openai = new OpenAI({
@@ -20,6 +22,7 @@ function CommuneButton({ setApiResponse, cardName, position }) {
 
     // Contacts ChatGPT
     async function oracle() {
+        setIsResponding(true);
         const completion = await openai.chat.completions.create({
             model: "gpt-4o-mini",
             max_tokens: 170,
@@ -34,12 +37,14 @@ function CommuneButton({ setApiResponse, cardName, position }) {
         setApiResponse(completion.choices[0].message.content);
     }
 
+
     return (
-        <button className="commune-button" onClick={oracle}>
-            <span className="front"
-                >Commune with Spirits
-            </span>
-        </button>
+        <>
+        {isResponding 
+            ? (<img className="loading-icon" src={loadingGif} alt="Loading..." />)
+            : (<button onClick={oracle} className="commune-button">Commune with Spirits</button>)}
+
+        </>
     )
 }
 

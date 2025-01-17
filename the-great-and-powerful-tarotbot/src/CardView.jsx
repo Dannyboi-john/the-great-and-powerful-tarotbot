@@ -73,7 +73,7 @@ function CardView( { onBeginReading }) {
                 </div>
             )}
 
-            {allFlipped ? <button onClick={onBeginReading} className="begin-reading-button"><span /* className="front" */>Begin Reading</span></button> : null}
+            {allFlipped ? <button onClick={onBeginReading} className="begin-reading-button"><span>Begin Reading</span></button> : null}
         </>
     )
     
