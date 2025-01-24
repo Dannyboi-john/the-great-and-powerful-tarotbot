@@ -11,7 +11,7 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
 
 
     const [src, setSrc] = useState(tarotBack);
-    const [isFlipped, setIsFlipped] = useState(false);
+    const [cardIsFlipped, setCardIsFlipped] = useState(false);
     const [modal, setModal] = useState(false);
 
 
@@ -38,7 +38,7 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
         try {
             const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.png`);
             setSrc(cardImage.default || cardImage);
-            setIsFlipped(true);
+            setCardIsFlipped(true);
             if (parent != "ReadingView") {
                 incrementTotalFlipped();
             }
@@ -58,7 +58,7 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
 
         <>
         <img 
-            className={parent === "ReadingView" ? "reading-card-view" : isFlipped ? 'tarot-front' : 'tarot-back'}
+            className={parent === "ReadingView" ? "reading-card-view" : cardIsFlipped ? 'tarot-front' : 'tarot-back'}
             src={src}
             alt="Back of a tarot card"
             onLoad={parent === "ReadingView" ? displayCard : null}

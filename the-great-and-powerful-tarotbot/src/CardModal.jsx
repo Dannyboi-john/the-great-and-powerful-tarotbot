@@ -1,14 +1,17 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 
 function CardModal({ openModal, closeModal,  children }) {
     const ref = useRef();
+    const [isAnimating, setIsAnimating] = useState(false);
 
 
     useEffect(() => {
         if (openModal) {
             ref.current?.showModal();
+            setTimeout(() => setIsAnimating(true), 10);
         } else {
+            setIsAnimating(false)
             ref.current?.close();
         }
     }, [openModal]);
@@ -23,7 +26,7 @@ function CardModal({ openModal, closeModal,  children }) {
         <dialog
             ref={ref}
             onCancel={closeModal}
-            className="description-modal"
+            className={`description-modal ${isAnimating ? "fade-in" : ""}`}
         >
             <div 
                 className="close-icon"

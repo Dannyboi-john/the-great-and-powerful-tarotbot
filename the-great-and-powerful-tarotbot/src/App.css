@@ -161,9 +161,14 @@ form {
 
 }
 
-.description-modal::backdrop {
-    background: rgb(0 0 0 / .8);
 
+.description-modal::backdrop {
+    background: rgb(0 0 0 / 0.0);
+    transition: background 1s ease;
+}
+
+.description-modal.fade-in::backdrop {
+    background: rgb(0 0 0 / 0.8);
 }
 
 .description-modal {
@@ -175,6 +180,12 @@ form {
     margin-right: 20%;
     margin-left: 20%;
     text-align: left;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.description-modal.fade-in {
+    opacity: 1;
 }
 
 .close-button {
