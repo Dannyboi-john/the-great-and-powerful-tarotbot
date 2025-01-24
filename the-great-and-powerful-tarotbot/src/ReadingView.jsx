@@ -106,8 +106,8 @@ function ReadingView({ goBack }) {
                 </div>
             </div>
 
-            <button className="home-button">
-                <span className="home-button-front" onClick={goBack}>Try A Different Reading</span>
+            <button className="home-button" onClick={goBack}>
+                Try A Different Reading
             </button>
         </>
     )
