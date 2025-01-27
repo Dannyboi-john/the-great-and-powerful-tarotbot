@@ -58,7 +58,7 @@ form {
     padding-top: 0.5%;
     padding-bottom: 0.5%;
     font-family: 'Poppins';
-    background: #624280;
+    background: #dddddd;
     color: rgb(0, 0, 0);
     border: none;
     outline-offset: 4px;
@@ -101,7 +101,7 @@ form {
     animation-iteration-count: initial;
     transition: all .2s ease-in-out;
     cursor: pointer;
-    height: 75%;
+    max-width: 75%;
     box-shadow: none;
 }
 
@@ -120,7 +120,7 @@ form {
 }
 
 .tarot-front {
-    max-width: 70%;
+    max-width: 75%;
     object-fit: contain;
     cursor: pointer;
 }
