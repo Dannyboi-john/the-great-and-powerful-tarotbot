@@ -13,6 +13,7 @@
     "dotenv": "^16.4.5",
     "openai": "^4.56.1",
     "react": "^18.2.0",
+    "react-card-flip": "^1.2.3",
     "react-dom": "^18.2.0",
     "require-context.macro": "^1.2.2"
   },
