@@ -57,6 +57,10 @@ function Landing({ onSubmit }) {
 
   return (
     <>
+      <br />
+      <br />
+      <h2 className="spred-choose-message"> Enter your query below</h2>
+
       <form ref={formRef} onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}
           placeholder="Compose Query Here" 
@@ -69,14 +73,13 @@ function Landing({ onSubmit }) {
 
           <br />
 
+          <h2 className="spred-choose-message">Then, choose your 3-card Spread</h2>
+
         <button 
           className={buttonClassName}
           type="submit"
           >
-            <img
-              src={enterIcon}
-              alt="enter icon"
-              />
+            Past | Present | Future
         </button>
       </form>
     </>
