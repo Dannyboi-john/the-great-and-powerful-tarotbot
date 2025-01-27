@@ -9,7 +9,7 @@ function CardModal({ openModal, closeModal,  children }) {
     useEffect(() => {
         if (openModal) {
             ref.current?.showModal();
-            setTimeout(() => setIsAnimating(true), 10);
+            setTimeout(() => setIsAnimating(true), 600);
         } else {
             setIsAnimating(false)
             ref.current?.close();

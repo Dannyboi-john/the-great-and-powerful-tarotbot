@@ -154,10 +154,10 @@ form {
 }
 
 .background {
-    background: rgb(34, 34, 34);
+    background: rgb(29, 29, 29);
     border-radius: 15px;
     height: 85vh;
-    box-shadow: 0 0 10px 5px;
+    /* box-shadow: 0 0 10px 5px; */
 
 }
 
@@ -295,6 +295,7 @@ form {
     margin-top: 2%;
     cursor: pointer;
     background-color: rgb(196, 77, 77);
+    margin-bottom: 2%;
 }
 
 

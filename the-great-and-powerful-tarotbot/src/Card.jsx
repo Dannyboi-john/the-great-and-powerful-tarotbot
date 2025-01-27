@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import tarotBack from './assets/tarot-back.jpg';
 import CardModal from './CardModal';
+import ReactCardFlip from "react-card-flip";
+
+
 /* import { DataContext } from './DataContext'; */
 
 
@@ -13,6 +16,8 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
     const [src, setSrc] = useState(tarotBack);
     const [cardIsFlipped, setCardIsFlipped] = useState(false);
     const [modal, setModal] = useState(false);
+
+    const [isFlipped, setIsFlipped] = useState(false);
 
 
 /*     const checkIfReading = parent === 'ReadingView'
@@ -39,6 +44,7 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
             const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.png`);
             setSrc(cardImage.default || cardImage);
             setCardIsFlipped(true);
+            setIsFlipped(!isFlipped);
             if (parent != "ReadingView") {
                 incrementTotalFlipped();
             }
@@ -57,12 +63,22 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
     return (
 
         <>
-        <img 
-            className={parent === "ReadingView" ? "reading-card-view" : cardIsFlipped ? 'tarot-front' : 'tarot-back'}
-            src={src}
-            alt="Back of a tarot card"
-            onLoad={parent === "ReadingView" ? displayCard : null}
-            onClick={parent != "ReadingView" ? displayCard : null}/>
+
+
+        <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+            <img 
+                className={parent === "ReadingView" ? "reading-card-view" : 'tarot-back'}
+                src={tarotBack}
+                alt="Back of a tarot card"
+                onLoad={parent === "ReadingView" ? displayCard : null}
+                onClick={parent != "ReadingView" ? displayCard : null}/>
+
+            <img className="tarot-front"
+                src={src}
+                alt="front of a tarot card"
+                />
+        </ReactCardFlip>
+
         <CardModal
             openModal={modal}
             closeModal={() => setModal(false)}
