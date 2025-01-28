@@ -75,12 +75,29 @@ function Landing({ onSubmit }) {
 
           <h2 className="spred-choose-message">Then, choose your 3-card Spread</h2>
 
-        <button 
-          className={buttonClassName}
-          type="submit"
-          >
-            Past | Present | Future
-        </button>
+        <div className="spread-buttons-container">
+
+        <button
+            className={buttonClassName}
+            type="submit"
+            >
+              Problem | Action | Outcome
+          </button>
+
+          <button
+            className={buttonClassName}
+            type="submit"
+            >
+              Past | Present | Future
+          </button>
+
+          <button
+            className={buttonClassName}
+            type="submit"
+            >
+              You | Your Path | Advice
+          </button>
+        </div>
       </form>
     </>
   )
