@@ -11,7 +11,7 @@ function Landing({ onSubmit }) {
   const [query, setQuery] = useState('');
   const [selectedSpread, setSelectedSpread] = useState(null)
 
-  const { setState } = useContext(DataContext);
+  const { state, setState } = useContext(DataContext);
 
   const formRef = useRef(null);
 
@@ -29,12 +29,12 @@ function Landing({ onSubmit }) {
 
     // Passes spread type.
     setState((prevState) => ({ ...prevState, 
-      spreadtype: selectedSpread,
+      spreadType: selectedSpread,
       isSubmitted: true,
       queryData: query
     }));
 
-    console.log(selectedSpread);
+    console.log("selectedSpread: ",selectedSpread);
 
     // Passes prop to App.jsx
     onSubmit(query);
@@ -55,6 +55,7 @@ function Landing({ onSubmit }) {
     // Sets query data
     setState((prevState) => ({ ...prevState, queryData: query}));
     setQuery(query);
+    console.log("Spread Type: ", state.spreadType);
 
   }
 

@@ -28,7 +28,7 @@ function ReadingView({ goBack }) {
         try {
             const cardImage = await import(`./assets/tarot-cards/${state.cardsData.name_short}.png`);
             setImageSrc(cardImage);
-            
+            console.log(state.spreadType[0], state.spreadType[1], state.spreadType[2]);
 
         } catch (error) {
             console.error('Error loading image:', error)
@@ -59,7 +59,8 @@ function ReadingView({ goBack }) {
                 <div className="commune-button-container">
                     {state.apiResponse[0] === null ? (
                         <CommuneButton 
-                            position={"past"} 
+                            /* position={"past"} */ 
+                            position={state.spreadType[0]}
                             cardName={state.cardsData.cards[0].name} 
                             setApiResponse={(value) => updateApiResponse(0, value)}
                         />
@@ -78,7 +79,8 @@ function ReadingView({ goBack }) {
                 <div className="commune-button-container">
                     {state.apiResponse[1] === null ? (
                         <CommuneButton 
-                            position={"present"} 
+                            /* position={"present"} */ 
+                            position={state.spreadType[1]}
                             cardName={state.cardsData.cards[1].name} 
                             setApiResponse={(value) => updateApiResponse(1, value)}
                         />
@@ -98,7 +100,8 @@ function ReadingView({ goBack }) {
                 <div className="commune-button-container">
                     {state.apiResponse[2] === null ? (
                         <CommuneButton 
-                            position={"future"}
+                            /* position={"future"} */
+                            position={state.spreadType[2]}
                             cardName={state.cardsData.cards[2].name}
                             setApiResponse={(value) => updateApiResponse(2, value)}
                         />

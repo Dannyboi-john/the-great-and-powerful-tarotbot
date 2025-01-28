@@ -15,7 +15,7 @@ export const DataProvider = ({ children }) => {
         apiResponse: [null, null, null], // Added
         isSubmitted: false , // Added
         isHome: true,
-        spreadType: ["", "", ""]
+        spreadType: [null]
     };
 
 
