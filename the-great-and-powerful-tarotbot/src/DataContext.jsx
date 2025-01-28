@@ -14,7 +14,8 @@ export const DataProvider = ({ children }) => {
         allFlipped: false,  // Added
         apiResponse: [null, null, null], // Added
         isSubmitted: false , // Added
-        isHome: true
+        isHome: true,
+        spreadType: ["", "", ""]
     };
 
 

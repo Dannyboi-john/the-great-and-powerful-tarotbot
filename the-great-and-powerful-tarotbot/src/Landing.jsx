@@ -1,7 +1,6 @@
 import React, { useState, useContext, useRef } from 'react';
 import './App.css';
 import { DataContext } from './DataContext';
-import enterIcon from './assets/enter-icon.svg';
 
 function Landing({ onSubmit }) {
 
@@ -10,28 +9,32 @@ function Landing({ onSubmit }) {
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [query, setQuery] = useState('');
+  const [selectedSpread, setSelectedSpread] = useState(null)
 
   const { setState } = useContext(DataContext);
 
   const formRef = useRef(null);
 
-  function handleKeyDown(e) {
-    if (e.code === 'Enter' || e.code === 'NumpadEnter') {
-      e.preventDefault();
-      handleSubmit(e);
-    }
-  }
 
+    // Handles form's fade-out animation
     if (isSubmitted) {
       textareaClassName += ' landing-fade-out';
       buttonClassName += ' landing-fade-out';
     }
-
-
-  function handleSubmit(e) {
+  
+  function handleSubmit(e, newSpread) {
 
     // Prevents browser from reloading the page.
     e.preventDefault();
+
+    // Passes spread type.
+    setState((prevState) => ({ ...prevState, 
+      spreadtype: selectedSpread,
+      isSubmitted: true,
+      queryData: query
+    }));
+
+    console.log(selectedSpread);
 
     // Passes prop to App.jsx
     onSubmit(query);
@@ -68,7 +71,7 @@ function Landing({ onSubmit }) {
           id="text-area-id"
           value={query} // Added this value tag while switching to context.
           onChange={e => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
+/*           onKeyDown={handleKeyDown} */
           />
 
           <br />
@@ -80,6 +83,7 @@ function Landing({ onSubmit }) {
         <button
             className={buttonClassName}
             type="submit"
+            onClick={() => setSelectedSpread(["Problem", "Action", "Outcome"])}
             >
               Problem | Action | Outcome
           </button>
@@ -87,6 +91,7 @@ function Landing({ onSubmit }) {
           <button
             className={buttonClassName}
             type="submit"
+            onClick={() => setSelectedSpread(["Past", "Present", "Future"])}
             >
               Past | Present | Future
           </button>
@@ -94,6 +99,7 @@ function Landing({ onSubmit }) {
           <button
             className={buttonClassName}
             type="submit"
+            onClick={() => setSelectedSpread(["Inner self", "Path", "Advice"])}
             >
               You | Your Path | Advice
           </button>
