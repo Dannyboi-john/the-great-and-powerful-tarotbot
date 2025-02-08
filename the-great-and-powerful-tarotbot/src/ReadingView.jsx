@@ -54,6 +54,7 @@ function ReadingView({ goBack }) {
                             src={imageSrc}
                             onLoad={displayCard}
                         />
+                        <div>{state.spreadType[0]}</div>
                 </div>
                 <div className="commune-button-container">
                     {state.apiResponse[0] === null ? (
@@ -74,6 +75,7 @@ function ReadingView({ goBack }) {
                             src={imageSrc}
                             onLoad={displayCard}
                         />
+                        <div>{state.spreadType[1]}</div>
                 </div>
                 <div className="commune-button-container">
                     {state.apiResponse[1] === null ? (
@@ -94,6 +96,7 @@ function ReadingView({ goBack }) {
                             src={imageSrc}
                             onLoad={displayCard}
                         />
+                        <div>{state.spreadType[2]}</div>
                 </div>
 
                 <div className="commune-button-container">
