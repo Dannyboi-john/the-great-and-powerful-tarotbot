@@ -28,7 +28,6 @@ function ReadingView({ goBack }) {
         try {
             const cardImage = await import(`./assets/tarot-cards/${state.cardsData.name_short}.png`);
             setImageSrc(cardImage);
-            console.log(state.spreadType[0], state.spreadType[1], state.spreadType[2]);
 
         } catch (error) {
             console.error('Error loading image:', error)

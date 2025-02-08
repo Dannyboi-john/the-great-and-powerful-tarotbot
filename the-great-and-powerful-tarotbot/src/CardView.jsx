@@ -59,16 +59,19 @@ function CardView( { onBeginReading }) {
                         <Card 
                             cardData={state.cardsData.cards[0]}
                             incrementTotalFlipped={incrementTotalFlipped}/>
+                        <div>{state.spreadType[0]}</div>
                     </div>
                     <div className="present-card">
                         <Card 
                             cardData={state.cardsData.cards[1]}
                             incrementTotalFlipped={incrementTotalFlipped}/>
+                        <div>{state.spreadType[1]}</div>
                     </div>
                     <div className="future-card">
                         <Card 
                             cardData={state.cardsData.cards[2]}
                             incrementTotalFlipped={incrementTotalFlipped}/>
+                        <div>{state.spreadType[2]}</div>
                     </div>
                 </div>
             )}
