@@ -37,7 +37,7 @@ function CommuneButton({ setApiResponse, cardName, position }) {
                     {role: "system", content: `You are a master tarot card reader who has been tasked to give a very brief 3-card tarot reading (${state.spreadType}) with the following query: ${state.queryData}`},
                     {
                         role: "user",
-                        content: `I have drawn ${cardName} to represent my ${position}. Please explain briefly what might that mean?` ,
+                        content: `I have drawn ${cardName} to represent my "${position}". Please explain briefly what might that mean?` ,
                     },
                 ],
             });

@@ -100,7 +100,7 @@ function Landing({ onSubmit }) {
           <button
             className={buttonClassName}
             type="submit"
-            onClick={() => setSelectedSpread(["Inner self", "Path", "Advice"])}
+            onClick={() => setSelectedSpread(["You", "Your Path", "Advice"])}
             >
               You | Your Path | Advice
           </button>
