@@ -337,3 +337,32 @@ form {
 .reading-future-card {
     max-width: 45%;
 }
+
+
+/* ~MOBILE FORMATTING~ */
+
+
+@media screen and (max-width: 700px) {
+    .submit-button {
+        border-radius: 12px;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        font-family: 'Poppins';
+        font-weight: bold;
+        font-size: 1em;
+        background: #624280;
+        color: rgb(255, 255, 255);
+        border: none;
+        outline-offset: 4px;
+        margin-top: 2%;
+        min-width: 100vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .query-text {
+        min-width: 90vw;
+    }
+}
