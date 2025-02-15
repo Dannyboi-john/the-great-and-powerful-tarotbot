@@ -45,7 +45,7 @@ function CommuneButton({ setApiResponse, cardName, position }) {
             // Successful response
             setApiResponse(completion.choices[0].message.content);
             setCommuneOrWait("Commune with Spirits")
-    } catch (error) {
+        } catch (error) {
             // Rate-limiting errors
             if (error.name === "RateLimitError" || error.message.includes("Rate limit reached")) {
                 setCommuneOrWait("Spirits are busy, try again shortly!");

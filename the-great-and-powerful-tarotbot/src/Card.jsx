@@ -20,11 +20,6 @@ function Card({ cardData, incrementTotalFlipped, parent, source }) {
     const [isFlipped, setIsFlipped] = useState(false);
 
 
-/*     const checkIfReading = parent === 'ReadingView'
-        ? displayCard()
-        : src */
-
-
     // Using setTImeout to animate card text.
     useEffect(() => {
         if (currentIndex < cardData.desc.length) {
