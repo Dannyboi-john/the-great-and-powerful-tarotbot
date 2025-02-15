@@ -4,6 +4,7 @@ import CardModal from './CardModal';
 import ReactCardFlip from "react-card-flip";
 import { DataContext } from './DataContext';
 import OpenAI from "openai";
+import loadingGif from './assets/loading-gif.gif';
 
 
 /* import { DataContext } from './DataContext'; */
@@ -64,10 +65,10 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 return newApiResponse;
             })
 
-            setModal(true);
+/*             setModal(true);
             setCurrentText('');
-            setCurrentIndex(0);
-            console.log(apiResponse[positionIndex]);
+            setCurrentIndex(0); */
+
         } catch (error) {
             // Rate-limiting errors
             if (error.name === "RateLimitError" || error.message.includes("Rate limit reached")) {
@@ -106,6 +107,10 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
             setSrc(cardImage.default || cardImage);
             setCardIsFlipped(true);
             setIsFlipped(!isFlipped);
+
+            setModal(true);
+            setCurrentText('');
+            setCurrentIndex(0);
             if (parent != "ReadingView") {
                 incrementTotalFlipped();
             }
@@ -145,7 +150,9 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 {cardData.name}
             </div>
             <br/>
-            {currentText}
+            {apiResponse[positionIndex] === null ? (
+                <img className="loading-icon" src={loadingGif} alt="Loading..." />
+             ) : currentText}
         </CardModal>
         </>
     )
