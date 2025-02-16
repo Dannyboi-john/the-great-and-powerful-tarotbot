@@ -20,6 +20,7 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
     const [isFlipped, setIsFlipped] = useState(false);
     const [isResponding, setIsResponding] = useState(false);
     const [apiResponse, setApiResponse] = useState([null, null, null]);
+    const [rateLimitError, setRateLimitError] = useState(false);
 
     const { state, setState } = useContext(DataContext);
 
@@ -32,12 +33,12 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
     });
     
 
-    const updateApiResponse = (positionIndex, value) => {
+/*     const updateApiResponse = (positionIndex, value) => {
         const updatedResponse = [...apiResponse]; // Create copy of array
         updatedResponse[positionIndex] = value; // Update specific index
         setApiResponse(updatedResponse); // Set the new array as the state
         setState((prevState) => ({ ...prevState, apiResponse: updatedResponse }));
-    }
+    } */
 
 
 
@@ -62,17 +63,13 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
             setApiResponse((prev) => {
                 const newApiResponse = [...prev];
                 newApiResponse[positionIndex] = completion.choices[0].message.content;
-                return newApiResponse;
+                return newApiResponse;            
             })
-
-/*             setModal(true);
-            setCurrentText('');
-            setCurrentIndex(0); */
 
         } catch (error) {
             // Rate-limiting errors
             if (error.name === "RateLimitError" || error.message.includes("Rate limit reached")) {
-                setCommuneOrWait("Spirits are busy, try again shortly!");
+                setRateLimitError(true);
             } else {
                 console.error("OOPS", error);
             }
@@ -105,7 +102,10 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
             const cardImage = await import(`./assets/tarot-cards/${cardData.name_short}.png`);
             oracle();
             setSrc(cardImage.default || cardImage);
-            setCardIsFlipped(true);
+            setCardIsFlipped(prev => {
+                return true;
+            });
+            console.log("cardIsFlipped: ", cardIsFlipped);
             setIsFlipped(!isFlipped);
 
             setModal(true);
@@ -122,6 +122,12 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 
 
 
+    function justDisplayModal() {
+        console.log("justDisplayModal has been called successfully :)")
+        setModal(true);
+    }
+
+
 
     return (
 
@@ -132,12 +138,14 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 className={parent === "ReadingView" ? "reading-card-view" : 'tarot-back'}
                 src={tarotBack}
                 alt="Back of a tarot card"
-                onLoad={parent === "ReadingView" ? displayCard : null}
-                onClick={parent != "ReadingView" ? displayCard : null}/>
+/*                 onLoad={parent === "ReadingView" ? displayCard : null} */
+                onClick={() => {displayCard()}}
+                    />
 
             <img className="tarot-front"
                 src={src}
                 alt="front of a tarot card"
+                onClick={() => {justDisplayModal()}}
                 />
         </ReactCardFlip>
 
@@ -150,9 +158,9 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 {cardData.name}
             </div>
             <br/>
-            {apiResponse[positionIndex] === null ? (
-                <img className="loading-icon" src={loadingGif} alt="Loading..." />
-             ) : currentText}
+            {apiResponse[positionIndex] === null 
+            ? ( <img className="loading-icon" src={loadingGif} alt="Loading..." />) 
+            : currentText}
         </CardModal>
         </>
     )
