@@ -68,7 +68,7 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 
         } catch (error) {
             // Rate-limiting errors
-            if (error.name === "RateLimitError" || error.message.includes("Rate limit reached")) {
+            if (error.name === "RateLimitError" || error.message.includes("429")) {
                 setRateLimitError(true);
             } else {
                 console.error("OOPS", error);
@@ -158,12 +158,24 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 {cardData.name}
             </div>
             <br/>
-            {apiResponse[positionIndex] === null 
-            ? ( <img className="loading-icon" src={loadingGif} alt="Loading..." />) 
-            : <div className="reading-text">{currentText}</div>}
+            {apiResponse[positionIndex] != null 
+                ? <div className="reading-text">{currentText}</div>
+                : isResponding === true
+                    ? <img className="loading-icon" src={loadingGif} alt="Loading..." />
+                    : rateLimitError === true
+                        ? <button onClick={() => {oracle()}}>
+                            Spirits are busy, try again in a moment!</button>
+                        : <div className="reading-text">{currentText}</div>
+            }
         </CardModal>
         </>
     )
 }
 
 export default Card
+
+{/* <div className="reading-text">{currentText}</div>} */}
+/* ( <img className="loading-icon" src={loadingGif} alt="Loading..." />)  */
+
+{/* <button onClick={() => {oracle()}}>
+Spirits are busy, try again in a moment!</button> */}
