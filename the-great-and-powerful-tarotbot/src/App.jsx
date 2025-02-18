@@ -3,7 +3,7 @@ import './App.css'
 import Landing from './Landing.jsx'
 import CardView from './CardView.jsx'
 import Header from './Header.jsx'
-import ReadingView from './ReadingView.jsx'
+/* import ReadingView from './ReadingView.jsx' */
 import { DataContext, DataProvider } from './DataContext.jsx'
 
 function App() {

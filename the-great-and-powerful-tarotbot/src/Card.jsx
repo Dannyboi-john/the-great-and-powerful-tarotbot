@@ -135,7 +135,7 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 
         <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
             <img 
-                className={parent === "ReadingView" ? "reading-card-view" : 'tarot-back'}
+                className="tarot-back"
                 src={tarotBack}
                 alt="Back of a tarot card"
 /*                 onLoad={parent === "ReadingView" ? displayCard : null} */
@@ -163,8 +163,8 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 : isResponding === true
                     ? <img className="loading-icon" src={loadingGif} alt="Loading..." />
                     : rateLimitError === true
-                        ? <button onClick={() => {oracle()}}>
-                            Spirits are busy, try again in a moment!</button>
+                        ? <button className="redial-button" onClick={() => {oracle()}}>
+                            Spirits are busy, click to try again in a moment!</button>
                         : <div className="reading-text">{currentText}</div>
             }
         </CardModal>
