@@ -63,7 +63,7 @@ function Landing({ onSubmit }) {
 
       <form ref={formRef} onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}
-          placeholder="Ask a quesetion and receive divine insight" 
+          placeholder="Ask a question and receive divine insight" 
           name="query" 
           id="text-area-id"
           value={query} // Added this value tag while switching to context.
