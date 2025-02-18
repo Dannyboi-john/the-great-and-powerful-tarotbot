@@ -19,23 +19,15 @@ function App() {
 function AppContent() {
   const { state, setState, resetState } = useContext(DataContext);
 
-  const [showCardBacks, setShowCardBacks] = useState(false);
   const [shouldStartTimer, setShouldStartTimer] = useState(false);
   const [query, setQuery] = useState('');
-  const [beginReading, setBeginReading] = useState(false);
 
   const [isHome, setIsHome] = useState(true);
 
 
-  function handleBeginReading() {
-    setBeginReading(true);
-    setState((prevState) => ({ ...prevState, beginReading: true }));
-  }
-
   useEffect(() => {
     if (shouldStartTimer) {
       const timer = setTimeout(() => {
-        setShowCardBacks(true);
         setState((prevState) => ({ ...prevState, showCardBacks: true }));
       }, 300);
 
@@ -51,7 +43,6 @@ function AppContent() {
   };
 
   const handleGoBack = () => {
-    setBeginReading(false);
     setIsHome(true);
     resetState();
   }
@@ -64,13 +55,6 @@ function AppContent() {
 
       <Header />
       <h2>{state.queryData}</h2>
-
-{/*         {isHome 
-        ? <Landing onSubmit={handleShowCardBacks} />
-        : beginReading 
-          ? <ReadingView goBack={handleGoBack}/> 
-          : <CardView onBeginReading={handleBeginReading} />
-      } */}
 
       {isHome
         ? <Landing onSubmit={handleShowCardBacks} />

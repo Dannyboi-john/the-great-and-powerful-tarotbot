@@ -7,10 +7,9 @@ import OpenAI from "openai";
 import loadingGif from './assets/loading-gif.gif';
 
 
-/* import { DataContext } from './DataContext'; */
 
 
-function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex }) {
+function Card({ cardData, position, positionIndex }) {
 
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -32,14 +31,6 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 
     });
     
-
-/*     const updateApiResponse = (positionIndex, value) => {
-        const updatedResponse = [...apiResponse]; // Create copy of array
-        updatedResponse[positionIndex] = value; // Update specific index
-        setApiResponse(updatedResponse); // Set the new array as the state
-        setState((prevState) => ({ ...prevState, apiResponse: updatedResponse }));
-    } */
-
 
 
     // Contacts ChatGPT
@@ -79,6 +70,9 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
     }
 
 
+
+
+    // Animates text on successful reading.
     useEffect(() => {
         if (apiResponse[positionIndex] && currentIndex < apiResponse[positionIndex].length) {
             const timeout = setTimeout(() => {
@@ -94,8 +88,6 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 
 
 
-
-
     // Dynamically import front of tarot cards.
     async function displayCard() {
         try {
@@ -105,15 +97,11 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
             setCardIsFlipped(prev => {
                 return true;
             });
-            console.log("cardIsFlipped: ", cardIsFlipped);
             setIsFlipped(!isFlipped);
 
             setModal(true);
             setCurrentText('');
             setCurrentIndex(0);
-            if (parent != "ReadingView") {
-                incrementTotalFlipped();
-            }
 
         } catch (error) {
             console.error('Error loading image:', error)
@@ -123,7 +111,6 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 
 
     function justDisplayModal() {
-        console.log("justDisplayModal has been called successfully :)")
         setModal(true);
     }
 
@@ -138,7 +125,6 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
                 className="tarot-back"
                 src={tarotBack}
                 alt="Back of a tarot card"
-/*                 onLoad={parent === "ReadingView" ? displayCard : null} */
                 onClick={() => {displayCard()}}
                     />
 
@@ -173,9 +159,3 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
 }
 
 export default Card
-
-{/* <div className="reading-text">{currentText}</div>} */}
-/* ( <img className="loading-icon" src={loadingGif} alt="Loading..." />)  */
-
-{/* <button onClick={() => {oracle()}}>
-Spirits are busy, try again in a moment!</button> */}

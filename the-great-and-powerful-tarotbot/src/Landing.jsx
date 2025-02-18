@@ -34,8 +34,6 @@ function Landing({ onSubmit }) {
       queryData: query
     }));
 
-    console.log("selectedSpread: ",selectedSpread);
-
     // Passes prop to App.jsx
     onSubmit(query);
     setIsSubmitted(true);
@@ -46,7 +44,6 @@ function Landing({ onSubmit }) {
     if (form) {
       const formData = new FormData(form);
       const formJson = Object.fromEntries(formData.entries());
-      console.log('Form Data:', formJson);
     }
 
     // Adds fadeout class to Landing elements.
@@ -55,7 +52,6 @@ function Landing({ onSubmit }) {
     // Sets query data
     setState((prevState) => ({ ...prevState, queryData: query}));
     setQuery(query);
-    console.log("Spread Type: ", state.spreadType);
 
   }
 
