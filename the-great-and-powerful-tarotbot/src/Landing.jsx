@@ -57,13 +57,13 @@ function Landing({ onSubmit }) {
 
   return (
     <>
-      <br />
-      <br />
-      <h2 className="spred-choose-message"> Enter your query below</h2>
+      {/* <br /> */}
+      {/* <br /> */}
+      {/* <h2 className="spred-choose-message"> Enter your query below</h2> */}
 
       <form ref={formRef} onSubmit={handleSubmit}  >
         <textarea className={textareaClassName}
-          placeholder="Compose Query Here" 
+          placeholder="Ask a quesetion for divine insight" 
           name="query" 
           id="text-area-id"
           value={query} // Added this value tag while switching to context.
@@ -73,7 +73,7 @@ function Landing({ onSubmit }) {
 
           <br />
 
-          <h2 className="spred-choose-message">Then, choose your 3-card Spread</h2>
+          <h2 className="spred-choose-message">Choose your 3-card Spread</h2>
 
         <div className="spread-buttons-container">
 
