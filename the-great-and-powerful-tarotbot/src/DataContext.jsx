@@ -5,15 +5,15 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
 
     const initialState = {
-        showCardBacks: false,   // Added
-        shouldStartTimer: false,    // Added
-        queryData: '',  // Added
-        beginReading: false,    // Added
-        totalFlipped: 0,    // Added
-        cardsData: [null],  // Added
-        allFlipped: false,  // Added
-        apiResponse: [null, null, null], // Added
-        isSubmitted: false , // Added
+        showCardBacks: false,   
+        shouldStartTimer: false,    
+        queryData: '',  
+        beginReading: false,    
+        totalFlipped: 0,    
+        cardsData: [null],  
+        allFlipped: false,  
+        apiResponse: [null, null, null], 
+        isSubmitted: false , 
         isHome: true,
         spreadType: [null]
     };

@@ -21,7 +21,7 @@ function Card({ cardData, position, positionIndex }) {
     const [apiResponse, setApiResponse] = useState([null, null, null]);
     const [rateLimitError, setRateLimitError] = useState(false);
 
-    const { state, setState } = useContext(DataContext);
+    const { state } = useContext(DataContext);
 
 
     // Instantiates OpenAI
