@@ -160,7 +160,7 @@ function Card({ cardData, incrementTotalFlipped, parent, position, positionIndex
             <br/>
             {apiResponse[positionIndex] === null 
             ? ( <img className="loading-icon" src={loadingGif} alt="Loading..." />) 
-            : currentText}
+            : <div className="reading-text">{currentText}</div>}
         </CardModal>
         </>
     )

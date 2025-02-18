@@ -156,7 +156,6 @@ form {
     grid-template-columns: auto auto auto; */
     display: flex;
     flex-direction: row;
-    flex: 1 1 1;
     padding-left: 10%;
     padding-right: 10%;
     justify-content: space-between;
@@ -338,6 +337,9 @@ form {
     max-width: 45%;
 }
 
+.reading-text {
+    font-size: 1em;
+}
 
 /* ~MOBILE FORMATTING~ */
 
@@ -359,6 +361,11 @@ form {
         margin-top: 2%;
         min-width: 100vw;
     }
+
+    .reading-text {
+        font-size: 0.7em;
+    }
+
 }
 
 @media screen and (max-width: 700px) {
