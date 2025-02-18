@@ -60,17 +60,21 @@ function AppContent() {
 
 
 
-
     <div className="background">
 
       <Header />
       <h2>{state.queryData}</h2>
 
-        {isHome 
+{/*         {isHome 
         ? <Landing onSubmit={handleShowCardBacks} />
         : beginReading 
           ? <ReadingView goBack={handleGoBack}/> 
           : <CardView onBeginReading={handleBeginReading} />
+      } */}
+
+      {isHome
+        ? <Landing onSubmit={handleShowCardBacks} />
+        : <CardView goBack={handleGoBack} />
       }
       
     </div>

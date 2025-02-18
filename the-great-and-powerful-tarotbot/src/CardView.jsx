@@ -3,9 +3,9 @@ import './App.css';
 import Card from './Card';
 import { DataContext } from './DataContext';
 
-function CardView( { onBeginReading }) {
+function CardView( { goBack }) {
 
-    const { state, setState } = useContext(DataContext);
+    const { state, setState, resetState } = useContext(DataContext);
 
     const [totalFlipped, setTotalFlipped] = useState(0);
     // const [cardsData, setCardsData] = useState([null]) *****
@@ -85,7 +85,9 @@ function CardView( { onBeginReading }) {
                 </div>
             )}
 
-{/*             {allFlipped ? <button onClick={onBeginReading} className="begin-reading-button"><span>Begin Reading</span></button> : null} */}
+            <button className="home-button" onClick={goBack}>
+                Try A Different Reading
+            </button>
         </>
     )
     

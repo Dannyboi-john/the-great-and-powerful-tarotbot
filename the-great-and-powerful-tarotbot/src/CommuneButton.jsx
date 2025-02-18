@@ -34,10 +34,10 @@ function CommuneButton({ setApiResponse, cardName, position }) {
                 model: "gpt-4o-mini",
                 max_tokens: 170,
                 messages: [
-                    {role: "system", content: `You are a master tarot card reader who has been tasked to give a very brief 3-card tarot reading (${state.spreadType}), with the following query: ${state.queryData}`},
+                    {role: "system", content: `You are a master tarot card reader who has been tasked to give a very brief 3-card tarot reading (${state.spreadType}), with the following query: "${state.queryData}"`},
                     {
                         role: "user",
-                        content: `I have drawn ${cardName} to represent the "${position}" position. Please explain briefly what might that mean?` ,
+                        content: `I have drawn ${cardName} to represent the "${position}" position. Please explain briefly what might that mean.` ,
                     },
                 ],
             });
