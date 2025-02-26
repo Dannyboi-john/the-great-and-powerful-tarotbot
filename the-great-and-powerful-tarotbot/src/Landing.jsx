@@ -11,16 +11,12 @@ function Landing({ onSubmit }) {
   const [query, setQuery] = useState('');
   const [selectedSpread, setSelectedSpread] = useState(null)
 
+  // Handles Landing fade-out.
+  const [fadeOut, setFadeOut] = useState(false);
+
   const { state, setState } = useContext(DataContext);
 
   const formRef = useRef(null);
-
-
-    // Handles form's fade-out animation
-    if (isSubmitted) {
-      textareaClassName += ' landing-fade-out';
-      buttonClassName += ' landing-fade-out';
-    }
   
   function handleSubmit(e, newSpread) {
 
@@ -36,7 +32,7 @@ function Landing({ onSubmit }) {
 
     // Passes prop to App.jsx
     onSubmit(query);
-    setIsSubmitted(true);
+/*     setIsSubmitted(true); */
     setState((prevState) => ({ ...prevState, isSubmitted: true}));
     
 
@@ -46,62 +42,62 @@ function Landing({ onSubmit }) {
       const formJson = Object.fromEntries(formData.entries());
     }
 
-    // Adds fadeout class to Landing elements.
-    textareaClassName += ' landing-fade-out';
 
     // Sets query data
     setState((prevState) => ({ ...prevState, queryData: query}));
     setQuery(query);
+    console.log("fadeOut: ", fadeOut);
 
   }
 
   return (
     <>
-      {/* <br /> */}
-      {/* <br /> */}
-      {/* <h2 className="spred-choose-message"> Enter your query below</h2> */}
 
-      <form ref={formRef} onSubmit={handleSubmit}  >
-        <textarea className={textareaClassName}
-          placeholder="Ask a question and receive divine insight" 
-          name="query" 
-          id="text-area-id"
-          value={query} // Added this value tag while switching to context.
-          onChange={e => setQuery(e.target.value)}
-/*           onKeyDown={handleKeyDown} */
-          />
+      <div className={`background ${fadeOut ? "landing-fade-out" : ""}`}>
 
-          <br />
+        <div className="textarea-label">What seeks your attention today?</div>
 
-          <h2 className="spred-choose-message">Choose your 3-card Spread</h2>
+        <form ref={formRef} onSubmit={handleSubmit}  >
+          <textarea className={textareaClassName}
+            placeholder="Ask a question and receive divine insight" 
+            name="query" 
+            id="text-area-id"
+            value={query} // Added this value tag while switching to context.
+            onChange={e => setQuery(e.target.value)}
+            />
 
-        <div className="spread-buttons-container">
+            <br />
 
-        <button
-            className={buttonClassName}
-            type="submit"
-            onClick={() => setSelectedSpread(["Problem", "Action", "Outcome"])}
-            >
-              Problem | Action | Outcome
-          </button>
+            <h2 className="spread-choose-message">Choose your 3-card Spread</h2>
+
+          <div className="spread-buttons-container">
 
           <button
-            className={buttonClassName}
-            type="submit"
-            onClick={() => setSelectedSpread(["Past", "Present", "Future"])}
-            >
-              Past | Present | Future
-          </button>
+              className={buttonClassName}
+              type="submit"
+              onClick={() => setSelectedSpread(["Problem", "Action", "Outcome"])}
+              >
+                Problem | Action | Outcome
+            </button>
 
-          <button
-            className={buttonClassName}
-            type="submit"
-            onClick={() => setSelectedSpread(["You", "Your Path", "Advice"])}
-            >
-              You | Your Path | Advice
-          </button>
-        </div>
-      </form>
+            <button
+              className={buttonClassName}
+              type="submit"
+              onClick={() => setSelectedSpread(["Past", "Present", "Future"])}
+              >
+                Past | Present | Future
+            </button>
+
+            <button
+              className={buttonClassName}
+              type="submit"
+              onClick={() => setSelectedSpread(["You", "Your Path", "Advice"])}
+              >
+                You | Your Path | Advice
+            </button>
+          </div>
+        </form>
+      </div>
     </>
   )
 }

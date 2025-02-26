@@ -41,6 +41,8 @@ function CardView( { goBack }) {
     return (
         <>
             {state.cardsData && (
+
+                <>
                 <div className="flip-container">
                     <div className="past-card">
                         <Card 
@@ -70,11 +72,15 @@ function CardView( { goBack }) {
                         <div>{state.spreadType[2]}</div>
                     </div>
                 </div>
+
+
+                <button className="home-button" onClick={goBack}>
+                <span className="go-back-icon">{goBackSVG}</span>  Try A Different Reading
+                </button>
+                </>
             )}
 
-            <button className="home-button" onClick={goBack}>
-            <span className="go-back-icon">{goBackSVG}</span>  Try A Different Reading
-            </button>
+
         </>
     )
     

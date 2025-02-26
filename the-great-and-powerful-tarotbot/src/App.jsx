@@ -19,6 +19,7 @@ function App() {
 function AppContent() {
   const { state, setState, resetState } = useContext(DataContext);
 
+
   const [shouldStartTimer, setShouldStartTimer] = useState(false);
   const [query, setQuery] = useState('');
 
@@ -51,17 +52,19 @@ function AppContent() {
 
 
 
-    <div className="background">
+    
 
+    <>
       <Header />
       <h2>{state.queryData}</h2>
+
 
       {isHome
         ? <Landing onSubmit={handleShowCardBacks} />
         : <CardView goBack={handleGoBack} />
       }
       
-    </div>
+    </>
   );
 }
 
