@@ -486,4 +486,8 @@ form {
         max-width: 90%;
     }
 
+    .spread-description {
+        font-size: 0.7em;
+    }
+
 }
