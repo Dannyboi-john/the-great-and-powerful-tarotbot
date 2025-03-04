@@ -5,7 +5,7 @@ import { DataContext } from './DataContext';
 function Landing({ onSubmit }) {
 
   let textareaClassName = 'query-text';
-  let buttonClassName = 'submit-button';
+  let buttonClassName = 'query-selector';
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [query, setQuery] = useState('');
@@ -22,6 +22,12 @@ function Landing({ onSubmit }) {
 
     // Prevents browser from reloading the page.
     e.preventDefault();
+
+    // Shows an alert if no spread selected.
+    if (!selectedSpread) {
+      alert("Please select a spread before continuing!");
+      return;
+    }
 
     // Passes spread type.
     setState((prevState) => ({ ...prevState, 
@@ -46,7 +52,6 @@ function Landing({ onSubmit }) {
     // Sets query data
     setState((prevState) => ({ ...prevState, queryData: query}));
     setQuery(query);
-    console.log("fadeOut: ", fadeOut);
 
   }
 
@@ -72,30 +77,48 @@ function Landing({ onSubmit }) {
 
           <div className="spread-buttons-container">
 
-          <button
-              className={buttonClassName}
-              type="submit"
+            <div className="spread-container"
               onClick={() => setSelectedSpread(["Problem", "Action", "Outcome"])}
-              >
-                Problem | Action | Outcome
-            </button>
-
-            <button
-              className={buttonClassName}
-              type="submit"
+              tabIndex="0">
+              <div
+                  className="spread-content"
+                  
+                  >
+                    <h3 className="spread-header">Problem | Action | Outcome</h3>
+                    <p className="spread-description">Identifies a problem you're facing, what action to take, and the likely result</p>
+              </div>
+            </div>
+            
+            <div className="spread-container"
               onClick={() => setSelectedSpread(["Past", "Present", "Future"])}
-              >
-                Past | Present | Future
-            </button>
+              tabIndex="0">
+              <div
+                  className="spread-content"
+                  >
+                    <h3 className="spread-header">Past | Present | Future</h3>
+                    <p className="spread-description">See what has shaped you, what surrounds you, and what awaits you</p>
+              </div>
+            </div>
 
-            <button
-              className={buttonClassName}
-              type="submit"
+            <div className="spread-container"
               onClick={() => setSelectedSpread(["You", "Your Path", "Advice"])}
-              >
-                You | Your Path | Advice
-            </button>
+              tabIndex="0">
+              <div
+                  className="spread-content"
+
+                  >
+                    <h3 className="spread-header">You | Your Path | Advice</h3>
+                    <p className="spread-description">Understand yourself, your journey ahead, and the wisdom you need</p>
+              </div>
+            </div>
+
+
           </div>
+
+          <button
+            className="submit-button"
+            type="submit"
+            >Draw Your Cards</button>
         </form>
       </div>
     </>
