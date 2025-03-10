@@ -10,7 +10,7 @@ html {
 
 body {
     padding: 2%;
-    height: 100vh;
+    height: 100%;
     font-family: 'Poppins';
     text-align: center;
     color: rgba(255, 255, 255, 0.685);
@@ -43,6 +43,7 @@ form {
 .textarea-label {
     color: #a88231;
     font-style: italic;
+    padding-top: 5%;
     font-weight: 300;
     font-size: medium;
 }
@@ -69,10 +70,6 @@ form {
 
 .query-selector {
     border-radius: 7px;
-/*     padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 3%;
-    padding-bottom: 3%; */
     width: 80%;
     font-family: 'Poppins';
     font-weight: bold;
@@ -118,6 +115,12 @@ form {
     font-style: italic;
 }
 
+
+.instructions {
+    font-weight: 300;
+    color: #a88231;
+}
+
 .front {
     will-change: transform;
     transition: transform 70ms;
@@ -142,6 +145,7 @@ form {
     color: rgb(255, 255, 255);
     border: none;
     outline-offset: 4px;
+    margin-bottom: 4%;
     margin-top: 2%;
     min-width: 50%;
 }
@@ -236,7 +240,7 @@ form {
     background: #291C2D;
     outline: 1px solid #745513;
     border-radius: 7px;
-    height: 80vh;
+    height: 100%;
     width: 50%;
 
 }
@@ -455,6 +459,7 @@ form {
         border: none;
         outline-offset: 4px;
         margin-top: 2%;
+        margin-bottom: 3%;
         min-width: 80vw;
     }
 

@@ -60,6 +60,8 @@ function Landing({ onSubmit }) {
 
       <div className={`background ${fadeOut ? "landing-fade-out" : ""}`}>
 
+        <div className="instructions">Enter your query below, pick a spread, and receive higher guidance. Or, simply pick a spread without a query for general reading</div>
+
         <div className="textarea-label">What seeks your attention today?</div>
 
         <form ref={formRef} onSubmit={handleSubmit}  >
