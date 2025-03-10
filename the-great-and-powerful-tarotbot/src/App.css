@@ -17,6 +17,14 @@ body {
 
 }
 
+.background-inner {
+    display: inline;
+    width: 80%;
+    align-items: center;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
 .header {
     display: inline-block;
     /* padding-top: 1%; */
@@ -38,6 +46,13 @@ textarea::placeholder {
 
 form {
     color: black;
+}
+
+.icons-top {
+    display: flex;
+    padding-left: 40%;
+    padding-right: 40%;
+    justify-content: space-between;
 }
 
 .textarea-label {
@@ -117,6 +132,9 @@ form {
 
 
 .instructions {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 4%;
     font-weight: 300;
     color: #a88231;
 }
@@ -473,8 +491,12 @@ form {
         background: #291C2D;
         outline: 1px solid #745513;
         border-radius: 7px;
-        height: 70vh;
+        height: 100%;
         width: 90%;
+    }
+
+    .background-inner {
+        width: 80%;
     }
 
     .query-text {

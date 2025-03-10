@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #d97706;
+      }
+
+      .cls-1 {
+        opacity: 0.4;
+      }
+    </style>
+  </defs>
+  <g id="logos" transform="translate(-2 -2)">
+    <path id="Path_151" data-name="Path 151" class="cls-1" d="M12,22A10,10,0,1,1,22,12,10.029,10.029,0,0,1,12,22ZM12,4a8,8,0,1,0,8,8A8.024,8.024,0,0,0,12,4Z"/>
+    <path id="Path_152" data-name="Path 152" class="cls-2" d="M12,13a.945.945,0,0,1-1-1V8a1,1,0,0,1,2,0v4A.945.945,0,0,1,12,13Z"/>
+    <circle id="Ellipse_7" data-name="Ellipse 7" class="cls-2" cx="1" cy="1" r="1" transform="translate(11 15)"/>
+  </g>
+</svg>

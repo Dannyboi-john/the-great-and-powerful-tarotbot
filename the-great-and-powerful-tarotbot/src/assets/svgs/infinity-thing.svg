@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100.188" height="10.5" viewBox="0 0 100.188 10.5">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #d97706;
+        stroke-width: 0.5px;
+      }
+    </style>
+  </defs>
+  <g id="logos" transform="translate(0.094 -4.75)">
+    <path id="Path_154" data-name="Path 154" class="cls-1" d="M0,10a65,65,0,0,0,50,0,65,65,0,0,1,50,0"/>
+    <path id="Path_155" data-name="Path 155" class="cls-1" d="M0,10a65,65,0,0,1,50,0,65,65,0,0,0,50,0"/>
+  </g>
+</svg>
