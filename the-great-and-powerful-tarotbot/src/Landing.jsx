@@ -3,6 +3,7 @@ import './App.css';
 import { DataContext } from './DataContext';
 import star from './assets/svgs/star.svg';
 import moon from './assets/svgs/moon.svg';
+import infinity from './assets/svgs/infinity-thing.svg';
 
 function Landing({ onSubmit }) {
 
@@ -62,15 +63,20 @@ function Landing({ onSubmit }) {
 
       <div className={`background ${fadeOut ? "landing-fade-out" : ""}`}>
 
-        <div className="background-inner">
-
-          <div className="instructions">Enter your query below, pick a spread, and receive higher guidance. Or, simply pick a spread without a query for general reading</div>
-
-          <div className="icons-top">
+        
+      <div className="icons-top">
             <img src={star} alt="star"/>
             <img src={moon} alt="moon"/>
             <img src={star} alt="star"/>
           </div>
+
+        <div className="background-inner">
+
+          <div className="instructions">Enter your query below, pick a spread, and receive higher guidance. Or, simply pick a spread without a query for general reading</div>
+
+          <div className="icon-header">
+            <img src={infinity} alt="star"/>
+        </div>
 
           <div className="textarea-label">What seeks your attention today?</div>
 
