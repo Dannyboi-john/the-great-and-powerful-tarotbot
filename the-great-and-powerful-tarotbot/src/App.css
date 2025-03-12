@@ -72,7 +72,7 @@ form {
     color: rgb(0, 0, 0);
     background-color: rgba(255, 255, 255, 0.596);
     resize: none;
-    overflow: hidden;
+    overflow: auto;
     min-height: 7em;
     width: 80%;
 }
@@ -486,17 +486,31 @@ form {
     }
 
     .background {
+        position: relative;
         display: inline-block;
         justify-content: center;
         background: #291C2D;
         outline: 1px solid #745513;
         border-radius: 7px;
-        height: 100%;
+        height: auto;
+        min-height: 100vh;
         width: 90%;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .background-inner {
-        width: 80%;
+        min-height: 100%;
+        width: 100%;
+        flex-grow: 1;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .background-inner {
+        width: 100%;
+        min-height: 100%;
+        flex-grow: 1;
     }
 
     .query-text {
@@ -518,10 +532,15 @@ form {
     }
 
     body {
-        height: 100%;
+        margin: 0;
+        padding: 0;
+        height: auto;
     }
 
     html {
-        height: 100%;
+        margin: 0;
+        padding: 0;
+        height: auto;
+        min-height: 100vh;
     }
 }
