@@ -468,7 +468,7 @@ form {
         background: #291C2D;
         outline: 1px solid #745513;
         border-radius: 7px;
-        height: 70vh;
+        height: 100%;
         width: 90%;
     }
 
