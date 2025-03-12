@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <style>
+      .cls-1, .cls-2, .cls-4 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: rgba(217,119,6,0.3);
+      }
+
+      .cls-2 {
+        stroke: #d97706;
+      }
+
+      .cls-3 {
+        fill: #d97706;
+      }
+
+      .cls-4 {
+        stroke: rgba(217,119,6,0.6);
+      }
+    </style>
+  </defs>
+  <g id="logos" transform="translate(-1.5 -1.5)">
+    <circle id="Ellipse_4" data-name="Ellipse 4" class="cls-1" cx="10" cy="10" r="10" transform="translate(2 2)"/>
+    <circle id="Ellipse_5" data-name="Ellipse 5" class="cls-2" cx="6" cy="6" r="6" transform="translate(6 6)"/>
+    <circle id="Ellipse_6" data-name="Ellipse 6" class="cls-3" cx="2" cy="2" r="2" transform="translate(10 10)"/>
+    <path id="Path_150" data-name="Path 150" class="cls-4" d="M12,2V4m0,16v2M2,12H4m16,0h2M4.93,4.93,6.34,6.34M17.66,17.66l1.41,1.41m0-14.14L17.66,6.34M6.34,17.66,4.93,19.07"/>
+  </g>
+</svg>

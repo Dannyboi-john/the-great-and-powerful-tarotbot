@@ -1,6 +1,8 @@
 import React, { useState, useContext, useRef } from 'react';
 import './App.css';
 import { DataContext } from './DataContext';
+import star from './assets/svgs/star.svg';
+import moon from './assets/svgs/moon.svg';
 
 function Landing({ onSubmit }) {
 
@@ -60,66 +62,77 @@ function Landing({ onSubmit }) {
 
       <div className={`background ${fadeOut ? "landing-fade-out" : ""}`}>
 
-        <div className="textarea-label">What seeks your attention today?</div>
+        <div className="background-inner">
 
-        <form ref={formRef} onSubmit={handleSubmit}  >
-          <textarea className={textareaClassName}
-            placeholder="Ask a question and receive divine insight" 
-            name="query" 
-            id="text-area-id"
-            value={query} // Added this value tag while switching to context.
-            onChange={e => setQuery(e.target.value)}
-            />
+          <div className="instructions">Enter your query below, pick a spread, and receive higher guidance. Or, simply pick a spread without a query for general reading</div>
 
-            <br />
-
-            <h2 className="spread-choose-message">Choose your 3-card Spread</h2>
-
-          <div className="spread-buttons-container">
-
-            <div className="spread-container"
-              onClick={() => setSelectedSpread(["Problem", "Action", "Outcome"])}
-              tabIndex="0">
-              <div
-                  className="spread-content"
-                  
-                  >
-                    <h3 className="spread-header">Problem | Action | Outcome</h3>
-                    <p className="spread-description">Identifies a problem you're facing, what action to take, and the likely result</p>
-              </div>
-            </div>
-            
-            <div className="spread-container"
-              onClick={() => setSelectedSpread(["Past", "Present", "Future"])}
-              tabIndex="0">
-              <div
-                  className="spread-content"
-                  >
-                    <h3 className="spread-header">Past | Present | Future</h3>
-                    <p className="spread-description">See what has shaped you, what surrounds you, and what awaits you</p>
-              </div>
-            </div>
-
-            <div className="spread-container"
-              onClick={() => setSelectedSpread(["You", "Your Path", "Advice"])}
-              tabIndex="0">
-              <div
-                  className="spread-content"
-
-                  >
-                    <h3 className="spread-header">You | Your Path | Advice</h3>
-                    <p className="spread-description">Understand yourself, your journey ahead, and the wisdom you need</p>
-              </div>
-            </div>
-
-
+          <div className="icons-top">
+            <img src={star} alt="star"/>
+            <img src={moon} alt="moon"/>
+            <img src={star} alt="star"/>
           </div>
 
-          <button
-            className="submit-button"
-            type="submit"
-            >Draw Your Cards</button>
-        </form>
+          <div className="textarea-label">What seeks your attention today?</div>
+
+          <form ref={formRef} onSubmit={handleSubmit}  >
+            <textarea className={textareaClassName}
+              placeholder="Ask a question and receive divine insight" 
+              name="query" 
+              id="text-area-id"
+              value={query} // Added this value tag while switching to context.
+              onChange={e => setQuery(e.target.value)}
+              />
+
+              <br />
+
+              <h2 className="spread-choose-message">Choose your 3-card Spread</h2>
+
+            <div className="spread-buttons-container">
+
+              <div className="spread-container"
+                onClick={() => setSelectedSpread(["Problem", "Action", "Outcome"])}
+                tabIndex="0">
+                <div
+                    className="spread-content"
+                    
+                    >
+                      <h3 className="spread-header">Problem | Action | Outcome</h3>
+                      <p className="spread-description">Identifies a problem you're facing, what action to take, and the likely result</p>
+                </div>
+              </div>
+              
+              <div className="spread-container"
+                onClick={() => setSelectedSpread(["Past", "Present", "Future"])}
+                tabIndex="0">
+                <div
+                    className="spread-content"
+                    >
+                      <h3 className="spread-header">Past | Present | Future</h3>
+                      <p className="spread-description">See what has shaped you, what surrounds you, and what awaits you</p>
+                </div>
+              </div>
+
+              <div className="spread-container"
+                onClick={() => setSelectedSpread(["You", "Your Path", "Advice"])}
+                tabIndex="0">
+                <div
+                    className="spread-content"
+
+                    >
+                      <h3 className="spread-header">You | Your Path | Advice</h3>
+                      <p className="spread-description">Understand yourself, your journey ahead, and the wisdom you need</p>
+                </div>
+              </div>
+
+
+            </div>
+
+            <button
+              className="submit-button"
+              type="submit"
+              >Draw Your Cards</button>
+          </form>
+        </div>
       </div>
     </>
   )
