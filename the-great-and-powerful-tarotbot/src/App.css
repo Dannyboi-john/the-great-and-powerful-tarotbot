@@ -517,4 +517,11 @@ form {
         font-size: 0.7em;
     }
 
+    body {
+        height: 100%;
+    }
+
+    html {
+        height: 100%;
+    }
 }
