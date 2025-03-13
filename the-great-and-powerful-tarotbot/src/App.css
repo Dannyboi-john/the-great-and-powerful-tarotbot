@@ -67,7 +67,8 @@ form {
 
 .query-text {
     padding-top: 1%;
-    padding-left: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
     border-radius: 7px;
     border: none;
     font-size: 100%;
