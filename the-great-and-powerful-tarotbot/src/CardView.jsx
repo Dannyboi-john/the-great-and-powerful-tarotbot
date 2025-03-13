@@ -43,6 +43,9 @@ function CardView( { goBack }) {
             {state.cardsData && (
 
                 <>
+                
+                <div className="card-instructions">Click the cards to reveal cosmic wisdom</div>
+
                 <div className="flip-container">
                     <div className="past-card">
                         <Card 
