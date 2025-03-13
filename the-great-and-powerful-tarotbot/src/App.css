@@ -75,6 +75,7 @@ form {
     overflow: auto;
     min-height: 7em;
     width: 80%;
+    padding-bottom: 7%;
 }
 
 .query-text:focus {
