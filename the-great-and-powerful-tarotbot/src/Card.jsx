@@ -29,16 +29,24 @@ function Card({ cardData, position, positionIndex }) {
             setIsResponding(true);
 
             const response = await fetch("/api/oracle", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                cardData,
-                position,
-                positionIndex,
-                spreadType: state.spreadType,
-                queryData: state.queryData,
-            }),
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    cardData,
+                    position,
+                    positionIndex,
+                    spreadType: state.spreadType,
+                    queryData: state.queryData,
+                }),
             });
+
+
+            // Check what you actually got
+            const text = await response.text();
+            console.log("Raw backend response:", text);
+
+            // Then parse as JSON
+            const data = JSON.parse(text);
 
             const result = await response.json();
 
