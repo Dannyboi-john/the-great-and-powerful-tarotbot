@@ -22,47 +22,38 @@ function Card({ cardData, position, positionIndex }) {
     const [rateLimitError, setRateLimitError] = useState(false);
 
     const { state } = useContext(DataContext);
-
-
-    // Instantiates OpenAI
-    const openai = new OpenAI({
-        apiKey: import.meta.env.VITE_REACT_APP_OPENAI_API_KEY,
-        dangerouslyAllowBrowser: true
-
-    });
     
-
 
     // Contacts ChatGPT
     async function oracle() {
         try {
             setIsResponding(true);
 
-            const completion = await openai.chat.completions.create({
-                model: "gpt-4o-mini",
-                max_tokens: 170,
-                messages: [
-                    {role: "system", content: `You are a master tarot card reader who has been tasked to give a very brief 3-card tarot reading (${state.spreadType}), with the following query: "${state.queryData}"`},
-                    {
-                        role: "user",
-                        content: `I have drawn ${cardData.name} to represent the "${position}" position. Please explain briefly what might that mean.` ,
-                    },
-                ],
+            const response = await fetch("/api/oracle", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                cardData,
+                position,
+                positionIndex,
+                spreadType: state.spreadType,
+                queryData: state.queryData,
+            }),
             });
 
-            // Successful response
+            const result = await response.json();
+
             setApiResponse((prev) => {
-                const newApiResponse = [...prev];
-                newApiResponse[positionIndex] = completion.choices[0].message.content;
-                return newApiResponse;            
-            })
+            const newApiResponse = [...prev];
+            newApiResponse[result.positionIndex] = result.content;
+            return newApiResponse;
+            });
 
         } catch (error) {
-            // Rate-limiting errors
-            if (error.name === "RateLimitError" || error.message.includes("429")) {
-                setRateLimitError(true);
+            if (error.message.includes("429")) {
+            setRateLimitError(true);
             } else {
-                console.error("OOPS", error);
+            console.error("OOPS", error);
             }
         } finally {
             setIsResponding(false);
