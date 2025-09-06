@@ -25,46 +25,39 @@ function Card({ cardData, position, positionIndex }) {
 
     // Contacts ChatGPT
     async function oracle() {
-        try {
-            setIsResponding(true);
+    try {
+        setIsResponding(true);
 
-            const response = await fetch("/api/oracle", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    cardData,
-                    position,
-                    positionIndex,
-                    spreadType: state.spreadType,
-                    queryData: state.queryData,
-                }),
-            });
+        const response = await fetch("/api/oracle", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                cardData,
+                position,
+                positionIndex,
+                spreadType: state.spreadType,
+                queryData: state.queryData,
+            }),
+        });
 
+        const result = await response.json();
 
-            // Check what you actually got
-            const text = await response.text();
-            console.log("Raw backend response:", text);
-
-            // Then parse as JSON
-            const data = JSON.parse(text);
-
-            const result = await response.json();
-
-            setApiResponse((prev) => {
+        // Update apiResponse so your typing effect useEffect will run
+        setApiResponse((prev) => {
             const newApiResponse = [...prev];
             newApiResponse[result.positionIndex] = result.content;
             return newApiResponse;
-            });
+        });
 
-        } catch (error) {
-            if (error.message.includes("429")) {
-            setRateLimitError(true);
-            } else {
-            console.error("OOPS", error);
-            }
-        } finally {
-            setIsResponding(false);
-        }
+        // Reset typing state for this card
+        setCurrentText("");
+        setCurrentIndex(0);
+
+    } catch (error) {
+        console.error("Oracle error:", error);
+    } finally {
+        setIsResponding(false);
+    }
     }
 
 
