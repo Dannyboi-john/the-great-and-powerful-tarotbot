@@ -3,7 +3,6 @@ import tarotBack from './assets/tarot-back.jpg';
 import CardModal from './CardModal';
 import ReactCardFlip from "react-card-flip";
 import { DataContext } from './DataContext';
-import OpenAI from "openai";
 import loadingGif from './assets/loading-gif.gif';
 
 
